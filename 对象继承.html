@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person={
+            name:'Tom',
+            age:19,
+            sex:'女',
+            say(){
+                console.log('通过对象实现复用')
+            }
+        }
+        let student={
+            __proto__:person,
+            sno:'10001',
+            sdept:'计算机系',
+            study(){
+                console.log('好好学习')
+            }
+        }
+        alert(student.name)
+    </script>
+</body>
+</html>
