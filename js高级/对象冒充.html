@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象冒充</title>
+</head>
+
+<body>
+    <script>
+        function Parent(name, age) {
+            this.name = name;
+            this.age = age;
+            this.showInfo = function () { }
+        }
+        // 对象冒充实现继承
+        // function Child(name){
+        //     this.parent=Parent;
+        //     this.parent(name);
+        //     delete parent;
+        //     this.study=function(){
+        //         console.log(this.name);
+        //         this.study();
+        //     }
+        // }
+        // var myChild=new Child('li',19)
+
+        // 通过call或者apply改变继承上下文
+        function Child(name) {
+            Parent.apply(this, [name]);
+            this.say = function () {
+                console.log(this.name);
+            }
+        }
+        var child = new Child('yang');
+    </script>
+</body>
+
+</html>
