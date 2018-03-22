@@ -1,0 +1,78 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration:none;
+  color:#fff;
+}
+html,
+body {
+  height: 100%;
+  position: relative;
+  font-family: '微软雅黑';
+}
+#bg {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background: url('../img/bg.png') no-repeat;
+  background-size: cover;
+}
+content {
+  width: 6.4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+content .wel {
+  margin: 0 auto;
+  padding-top: 2.5rem;
+  width: 4.6rem;
+  color: #fff;
+}
+content .tips{
+  width:6.4rem;
+  margin-bottom: -0.4rem;
+  text-align:center;
+  color:#f00;
+  font-size: .3rem;
+}
+content div{
+  height:1.2rem;
+  text-align:center;
+}
+content div input{
+  width:4rem;
+  height:0.8rem;
+  line-height: .8rem;
+  padding-left:.4rem;
+  border:0;
+  border-radius:0.4rem;
+  border:1px solid #bbffff;
+  background: none;
+  outline:none;
+  font-size:0.3rem;
+  color:#fff;
+  letter-spacing: .05rem;
+  font-weight: bold;
+}
+content .btn{
+  width:4.3rem;
+  height:.8rem;
+  line-height: .8rem;
+  padding:0;
+  background: #53b0f6;
+  border-radius:.4rem;
+  border:none;
+  font-size: .3rem;
+  color:#fff
+}
+content .info{
+  width:6.4rem;
+  margin-top: .3rem;
+  text-align:center;
+  color:#fff;
+  font-size:.2rem;
+}

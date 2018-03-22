@@ -1,0 +1,121 @@
+@charset "utf-8";
+html{
+    font-family: '微软雅黑';
+}
+.swiper-container{
+    width:100%;
+    top:0.877rem;
+}
+.swiper-wrapper{
+    width:100%;
+}
+.swiper-wrapper img{
+    width:100%;
+}
+/* 小图标 */
+content{
+    clear: both;
+}
+content .icon{
+    width:6.4rem;
+    margin-top:0.8rem;
+    overflow: hidden;
+}
+ul{
+    width:6.4rem;
+    list-style-type: none;
+    display:flex;
+    justify-content:center;
+}
+li{
+    width:1.2rem;
+    text-align:center;
+}
+content img{
+    width:1rem;
+}
+.flex-item{
+    flex-shrink: 1;
+}
+.flex-item p{
+    margin-top: -.2rem;
+    font-size: .2rem;
+    color:#666;
+}
+/* 小图标结束 */
+content .fuli{
+    display:block;
+    width:6rem;
+    margin:0 auto;
+    margin-top: .4rem;
+}
+/* 推荐商家开始 */
+#recommend .start{
+    margin-top: .3rem;
+    text-align:center;
+    font-size:.3rem;
+    color:#333;
+}
+#recommend .start span:nth-child(odd){
+    padding:0 .15rem;
+    color:rgb(190, 186, 186);
+    font-weight: bold;
+}
+section{
+    width:6.4rem;
+    height:2rem;
+    overflow: hidden;
+    margin-top:.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    box-shadow:0px 1px 0 #000;
+    display:flex;
+    justify-content:center;
+}
+section .img{
+    flex-shrink:1;
+}
+section img{
+    width:1.2rem;
+}
+section .aside{
+    height:1.23rem;
+    width:4rem;
+    padding-left:34px;
+    flex-shrink:1; 
+    text-align:left;
+    font-size: .2rem;
+}
+.aside h5{
+    margin-top:0.1rem;
+    color:#333;
+}
+.aside h5 span{
+    margin-right:5px;
+    padding:2px 3px;
+    border-radius:3px;
+    background:#ffef08;
+    color:#6f3f15;
+    font-weight: bold;
+}
+.aside .aside-con{
+    height:1.5rem;
+    margin-top:-3rem;
+}
+.aside .aside-con .icon{
+    width:.2rem;
+    position: relative;
+    top:1.4168rem;
+    fill: currentColor;
+    overflow: hidden;
+    color:#ffd000;
+}
+.aside .aside-con span{
+    margin:.2rem;
+    position:relative;
+    top:0.3542rem;
+}
+.aside .aside-con p{
+    margin-top: 0.1386rem; 
+    margin-left: -0.2rem;
+}
