@@ -75,6 +75,9 @@ content{
     position: absolute;
     color:rgb(117, 117, 117);
 }
+.item .money{
+    columns: #000000;fd7b53;
+}
 .item .hongbao{
     color:#ff3800;
 }
@@ -88,7 +91,12 @@ content{
     margin-top:0.77rem;
     padding:0.154rem 0;
     border:none;
+    border-radius:3px;
     background: #f85325;
     color:#fff;
     font-size: 0.3rem;
+}
+.wo-aside a:link,
+.wo-aside a:visited{
+    color:#fff;
 }

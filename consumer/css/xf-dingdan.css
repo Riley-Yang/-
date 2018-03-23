@@ -5,3 +5,19 @@ header h4{
     letter-spacing:3px;
     font-weight: normal;
 }
+.defa{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+.defa .dd-login{
+    width:3rem;
+    padding:.154rem 0;
+    border:none;
+    border-radius:3px;
+    background:#4cd964;
+    color:#fff;
+    font-size: 0.3rem;
+}
