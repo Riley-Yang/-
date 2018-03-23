@@ -1,4 +1,7 @@
 @charset "utf-8";
 header h4{
-    font-size: 20px;
+    font-size: 0.37rem;
+    margin:0.187rem 0.3388rem;
+    letter-spacing:3px;
+    font-weight: normal;
 }
