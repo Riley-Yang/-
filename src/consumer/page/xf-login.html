@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../../common/js/mobile.js"></script>
+    <script src="../../common/js/addevent.js"></script>
+    <script src="../../common/js/ajax.js"></script>
     <link rel="stylesheet" href="../css/xf-login.css">
     <title>欢迎登陆</title>
 </head>
@@ -12,7 +14,7 @@
     <div id="bg"></div>
     <content>
         <p class='wel'>Welcome</p>
-        <p class="tips">用户名或密码错误</p>
+        <p class="tips" id="tips">用户名或密码错误</p>
         <div class="xf-user">
             <img src="" alt="">
             <input type="text" class="userName" id="userName" placeholder='手机号/用户名'>
@@ -27,4 +29,9 @@
         <p class='info'>忘记密码 | <a href="xf-loginup.html">立即注册</a></p>
     </content>
 </body>
+<script>
+    addEvent(window,'load',function(){
+
+    })
+</script>
 </html>
