@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,12 @@
     <link rel="stylesheet" href="../css/xf-login.css">
     <title>欢迎登陆</title>
 </head>
+
 <body>
     <div id="bg"></div>
     <content>
         <p class='wel'>Welcome</p>
-        <p class="tips" id="tips">用户名或密码错误</p>
+        <p class="tips" id="tips"></p>
         <div class="xf-user">
             <img src="" alt="">
             <input type="text" class="userName" id="userName" placeholder='手机号/用户名'>
@@ -26,12 +28,38 @@
         <div class='xf-login'>
             <button class="btn" id="btn">立即登陆</button>
         </div>
-        <p class='info'>忘记密码 | <a href="xf-loginup.html">立即注册</a></p>
+        <p class='info'>忘记密码 |
+            <a href="xf-loginup.html">立即注册</a>
+        </p>
     </content>
 </body>
 <script>
-    addEvent(window,'load',function(){
-
-    })
+    addEvent(window, 'load', function () {
+        var $ = function (id) { return document.getElementById(id); }
+        var btn = $("btn");
+        var userName = $("userName");
+        var password = $("password");
+        var tips = $("tips");
+        // 点击登陆
+        addEvent(btn, 'click', function () {
+            console.log(userName.value);
+            console.log(password.value);
+            //执行ajax过程
+            var data = '{"userName":"' + userName.value + '","password":"' + password.value + '"}';
+            ajax("POST", "admin/login/xf-login.php", function (returnData) {
+                console.log(returnData)
+                var json = JSON.parse(returnData);
+                if (json.status == "10001") {
+                    // location.href = "manage.php";
+                } else {
+                    tips.innerHTML = json.message;
+                }
+            }, "json", data);
+        });
+        //文本框得到焦点清空提示
+        addEvent(userName, "focus", function () { tips.innerHTML = ''; });
+        addEvent(password, "focus", function () { tips.innerHTML = ''; });
+    });
 </script>
+
 </html>
