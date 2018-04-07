@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="../../common/js/mobile.js"></script>
+    <script src="../../common/consumer/js/mobile.js"></script>
     <script src="../../common/js/addevent.js"></script>
     <script src="../../common/js/ajax.js"></script>
     <link rel="stylesheet" href="../css/xf-login.css">
@@ -34,31 +34,30 @@
     </content>
 </body>
 <script>
-    addEvent(window, 'load', function () {
-        var $ = function (id) { return document.getElementById(id); }
-        var btn = $("btn");
-        var userName = $("userName");
-        var password = $("password");
-        var tips = $("tips");
+    addEvent(window, 'load', () => {
+        let $ = function (id) { return document.getElementById(id); }
+        let btn = $("btn");
+        let userName = $("userName");
+        let password = $("password");
+        let tips = $("tips");
         // 点击登陆
-        addEvent(btn, 'click', function () {
-            console.log(userName.value);
-            console.log(password.value);
+        addEvent(btn, 'click', () => {
             //执行ajax过程
-            var data = '{"userName":"' + userName.value + '","password":"' + password.value + '"}';
-            ajax("POST", "admin/login/xf-login.php", function (returnData) {
+            let data = '{"userName":"' + userName.value + '","password":"' + password.value + '"}';
+            console.log(data);
+            ajax("POST", "../../common/php/xf-login.php", returnData => {
                 console.log(returnData)
-                var json = JSON.parse(returnData);
+                let json = JSON.parse(returnData);
                 if (json.status == "10001") {
-                    // location.href = "manage.php";
+                    location.href = "./xf-waimai.shtml";
                 } else {
                     tips.innerHTML = json.message;
                 }
             }, "json", data);
         });
         //文本框得到焦点清空提示
-        addEvent(userName, "focus", function () { tips.innerHTML = ''; });
-        addEvent(password, "focus", function () { tips.innerHTML = ''; });
+        addEvent(userName, "focus", () => { tips.innerHTML = ''; });
+        addEvent(password, "focus", () => { tips.innerHTML = ''; });
     });
 </script>
 

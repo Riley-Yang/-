@@ -8,36 +8,104 @@
     <script src="../../common/js/mobile.js"></script>
     <link rel="stylesheet" href="../css/xf-loginup.css">
     <title>注册</title>
+    <style>
+        .tips {
+            width: 4rem;
+            margin: 0 auto;
+            font-size: .2rem;
+            color: brown;
+            text-align: right;
+        }
+    </style>
 </head>
 
 <body>
     <div id="bg"></div>
-    <header>
-        <div id="header">
-            <!-- <a href="#"> -->
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-dingwei"></use>
-            </svg>
-            <p id="address">秦皇岛市海港区</p>
-            <!-- </a> -->
-        </div>
-    </header>
-    
+
     <content>
         <img class="logo" src="../img/1.png" alt="">
         <div>
             <input type="text" class="userName" id="userName" placeholder='手机号/用户名'>
+            <p id="uTips" class="tips"></p>
         </div>
         <div>
             <input type="text" class="password" id="password" placeholder='密码'>
+            <p id="pTips" class="tips"></p>
         </div>
         <div>
-            <input type="text" class="password" id="password" placeholder='确认密码'>
+            <input type="text" class="password" id="repwd" placeholder='确认密码'>
+            <p id="rTips" class="tips"></p>
         </div>
         <div>
             <button class="btn" id="btn">注册</button>
-        </div>  
+        </div>
     </content>
 </body>
+<script src="../../common/js/addevent.js"></script>
+<script src="../../common/js/ajax.js"></script>
+<script>
+    addEvent(window, 'load', () => {
+        let $ = id => { return document.getElementById(id); }
+        let userName = $("userName");
+        let password = $("password");
+        let repwd = $("repwd");
+        let uTips = $("uTips");
+        let pTips = $("pTips");
+        let rTips = $("rTips");
+        let btn= $("btn");
+        let isUser=false;
+        let isPwd=false;
+        // 失去焦点的时候判断是否被占用
+        addEvent(userName, "blur", () => {
+            if (userName.value != "") {
+                let nameData = '{"userName":"' + userName.value + '"}';
+                ajax("POST", "../../common/php/uname.php", returnData => {
+                    let json = JSON.parse(returnData);
+                    if (json.status == "20001") {
+                        uTips.innerHTML = json.message;
+                    } else {
+                        uTips.innerHTML = json.message;
+                        uTips.style.color = "#0f0";
+                        isUser=true;
+                    }
+                }, "json", nameData);
+            }
+        });
+        // 用户名框得到焦点清空提示
+        addEvent(userName, "focus", () => {
+            uTips.innerHTML = "";
+        });
+        // 确认密码
+        addEvent(repwd, "blur", () => {
+            if (password.value != "" && repwd.value != "" || password.value!="" || repwd.value!="") {
+                if (password.value == repwd.value) {
+                    rTips.innerHTML="确认密码通过";
+                    rTips.style.color="#0f0";
+                    isPwd=true;
+                }else{
+                    rTips.innerHTML="两次密码不相同";
+                }
+            }
+        });
+        // 确认密码框得到焦点清空提示
+        addEvent(repwd,"focus",()=>{
+            rTips.innerHTML="";
+        })
+        // 注册按钮事件
+        addEvent(btn, 'click', () => {
+            if(isUser && isPwd){
+                let data='{"userName":"'+userName.value+'","password":"'+password.value+'"}';
+                console.log(data)
+                ajax("POST","../../common/php/reg.php",returnData1=>{
+                    let json=JSON.parse(returnData1);
+                        if(json.status=="10001"){
+                            btn.disabled = true;
+                            location.href="./xf-waimai.shtml";
+                        }
+                },"json",data);
+            }
+        })
+    });
+</script>
 
 </html>

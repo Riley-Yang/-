@@ -1,0 +1,121 @@
+/*@charset "utf-8";*/
+body,h1,h2,h3,h4,h5,h6,p,ul,li{
+	margin:0;
+	padding:0;
+}
+body{
+	background:url(../img/background.png) no-repeat;
+	background-size:cover;
+	position: relative;
+}
+.ad-login-header{
+	height:60px;
+	background:#426374;
+}
+.ad-login-header h3{
+	margin-left:110px;
+	color:#fff;
+	line-height:60px;
+	font-weight: normal;
+}
+/*登陆区*/
+section{
+	margin:0 auto;
+	margin-top: 96px;
+	width:521px;
+	height:310px;
+	/*border:1px solid #f0f;*/
+}
+input{
+	height:23px;
+	width:230px;
+	padding:5px 10px 5px 10px;
+	outline: none;
+	border: none;
+	font-size: 16px;
+	font-family: "Microsoft YaHei";
+}
+/*输入框*/
+.ad-user{
+	width:300px;
+	height:70px;
+	margin-left: 100px;
+	position: relative;
+}
+.user{
+	width:30px;
+	position:absolute;
+	bottom: 0;
+}
+.userName{
+	position: absolute;
+	bottom:0;
+	left:40px;
+}
+/*密码框*/
+.ad-pwd{
+	width:300px;
+	height:60px;
+	margin-left: 100px;
+	position: relative;
+}
+.pwd{
+	width:30px;
+	position:absolute;
+	bottom: 0;
+}
+.password{
+	position: absolute;
+	bottom:0;
+	left:40px;
+}
+/*验证码*/
+.ad-yzm{
+	width:300px;
+	height:60px;
+	margin-left: 140px;
+	position: relative;
+}
+.ad-yzm input{
+	width:100px;
+	position: absolute;
+	bottom:0;
+}
+.yzm{
+	width:100px;
+	position: absolute;
+	bottom:0;
+	left:130px;
+}
+/*提示*/
+.tip{
+	margin-left: 140px;
+	margin-top: 20px;
+	font-size: 14px;
+	color:#fff;
+}
+/*登陆按钮*/
+.btn{
+	margin-top: 20px;
+	margin-left: 140px;
+	cursor: pointer;
+	outline: none;
+	border:none;
+	background: #5eb85e;
+	padding:8px 25px;
+	border-radius: 3px;
+	letter-spacing: 5px;
+	color:#fff;
+}
+/*footer{
+	height:50px;
+	width:100%;
+	line-height: 50px;
+	background: #426374;
+	position: absolute;
+	float: left;
+	bottom: 0;
+	text-align: center;
+	color:#fff;
+	font-size: 14px;
+}*/

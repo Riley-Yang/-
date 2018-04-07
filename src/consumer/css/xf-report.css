@@ -1,0 +1,59 @@
+section{
+    width:5.892rem;
+    margin-top: 0.877rem;
+    padding-left: 0.254rem;
+    padding-right: 0.254rem;
+}
+.sjname {
+    height: 1.0164rem;
+    line-height: 1.0164rem;
+}
+.sjname img{
+    width:0.77rem;
+}
+.sjname span{
+    float: right;
+    margin-right: 2.8798rem;
+    font-size: .25rem;
+    color: rgb(117, 117, 117);
+}
+.jbstyle{
+
+    height: 0.616rem;
+    line-height: 0.077rem;
+}
+.jbstyle span{
+    font-size: .2rem;
+}
+.assess-img{
+    margin-top:0.154rem;
+}
+.assess-img img{
+    width:100px;
+}
+.assess-img .add-img{
+    position: relative;
+    top:-29px;
+    left:0px;
+    display: inline-block;
+    width: 1.54rem;
+    height: 1.54rem;
+    background: rgb(230, 228, 228);
+    border: 1px dashed rgb(179, 178, 178);
+    font-size: 0.924rem;
+    color: rgb(162, 161, 161);
+}
+textarea{
+    min-width:5.892rem;
+    min-height:2rem;
+    border:none;
+}
+.btn{
+    width:5rem;
+    height:0.5rem;
+    margin-left:0.462rem;
+    border:none;
+    border-radius: 3px;
+    background: #00a7ff;
+    color:#fff;
+}

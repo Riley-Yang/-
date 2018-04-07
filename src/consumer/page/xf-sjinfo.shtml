@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../common/consumer/js/mobile.js"></script>
+    <script src="../js/iconfont.js"></script>
+    <link rel="stylesheet" href="../../common/consumer/css/common.css">
+    <link rel="stylesheet" href="../css/xf-sjinfo.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <!-- <a href="#"> -->
+            <svg id="icon" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-zuojiantou"></use>
+            </svg>
+            <p id="address">连咖啡Coffee Box</p>
+            <!-- </a> -->
+        </div>
+    </header>
+
+    <div id="tab">
+        <ul id="nav">
+            <li>点餐</li>
+            <li>评价</li>
+            <li>商家</li>
+        </ul>
+        <div id="info">
+            <!-- 点餐开始 -->
+            <div class="dian">
+                <ul>
+                    <li><a href="#rexiao">热销</a></li>
+                    <li><a href="#youhui">优惠</a></li>
+                    <li><a href="#rexue">热雪昔</a></li>
+                    <li><a href="#fangdan">防弹家族</a></li>
+                    <li><a href="#tiansheng">天生的粉</a></li>
+                    <li><a href="#reka">热咖啡</a></li>
+                    <li><a href="#bingka">冰咖啡</a></li>
+                    <li><a href="#xuexi">雪昔系列</a></li>
+                    <li><a href="#chayin">茶饮热巧</a></li>
+                </ul>
+            <!--include virtual="html/goods.html"-->
+            <section id="section">
+                <div id="goods">
+                    <img src="../img/coffee1.webp" alt="coffe">
+                    <div class="aside">
+                        <h5>防弹咖啡</h5>
+                        <p>月售99份 好评率100%</p>
+                        <p>￥35</p>
+                        <div class="num">
+                            <button id="reduce">-</button>
+                            <input id="sum" type="text" value="0">
+                            <button id="plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+            <!-- 点餐结束 -->
+            <!-- 评价 -->
+            <div class="ping">
+                <div class="lei">
+                    <button id="all">全部<span>234</span></button>
+                    <button id="manyi">满意<span>234</span></button>
+                    <button id="buman">不满意<span>10</span></button>
+                    <button id="youtu">有图<span>13</span></button>
+                </div>
+                <div class="assess">
+                    <img id="header" class="header" src="../img/header.webp"></img>
+                    <div class="uinfo">
+                        <p id="user" class="user">匿名用户</p>
+                        <p id="time" class="time">2018-04-01</p>
+                        <p id="attitude" class="attitude">满意</p>
+                    </div>
+                    <div class="assess-info">
+                        <p>包装很干净，咖啡味道不错</p>
+                        <img src="../img/assess-img1.webp" alt="" id="assess-img" class="assess-img">
+                        <img src="../img/assess-img2.webp" alt="" id="assess-img" class="assess-img">
+                        <img src="../img/assess-img3.webp" alt="" id="assess-img" class="assess-img">
+                    </div>
+                </div>
+                <div class="assess">
+                    <img id="header" class="header" src="../img/header.webp"></img>
+                    <div class="uinfo">
+                        <p id="user" class="user">匿名用户</p>
+                        <p id="time" class="time">2018-04-01</p>
+                        <p id="attitude" class="attitude">满意</p>
+                    </div>
+                    <div class="assess-info">
+                        <p>包装很干净，咖啡味道不错</p>
+                        <img src="../img/assess-img1.webp" alt="" id="assess-img" class="assess-img">
+                        <img src="../img/assess-img2.webp" alt="" id="assess-img" class="assess-img">
+                        <img src="../img/assess-img3.webp" alt="" id="assess-img" class="assess-img">
+                    </div>
+                </div>
+            </div>
+            <!-- 商家信息 -->
+            <div class="shang">
+                <ul class="sjInfo">
+                    <li><span>商家名称</span><span>连咖啡Coffee Box</span></li>
+                    <li><span>商家信息</span><span>暂无简介</span></li>
+                    <li><span>品类</span><span>咖啡</span></li>
+                    <li><span>商家电话</span><span>18733507863</span></li>
+                    <li><span>地址</span><span>上海市黄浦区南京东路300号</span></li>
+                    <li><span>营业时间</span><span>08:30-17:30</span></li>
+                    <li><span>营业资质</span><span>></span></li>
+                    <li><a id="report" href="xf-report.html">举报商家</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <footer>
+        
+    </footer>
+</body>
+<script src="../../common/js/addevent.js"></script>
+<script>
+    addEvent(window, 'load', () => {
+        var $ = id => { return document.getElementById(id) };
+        var nav = $("nav");
+        var info = $("info");
+        var section=$("section");
+        hidden();
+        function hidden(){
+            for(var i =0;i<info.children.length;i++){
+                info.children[i].style.display="none";
+                // section[i].style.display="none";
+                nav.children[i].style.cssText = "border-bottom:2px solid #fff";
+            }
+        }
+        info.children[0].style.display="block";
+        nav.children[0].style.cssText = "border-bottom:2px solid #00a7ff";
+        for (var i=0;i<nav.children.length;i++){
+            (function(i){
+                nav.children[i].onclick = function () {
+                    hidden();
+                    info.children[i].style.display = "block";
+                    nav.children[i].style.cssText="border-bottom:2px solid #00a7ff";
+                }
+            })(i);
+        };
+        // 商品数量增减
+        var reduce=$('reduce');
+        var sum=$('sum');
+        var plus=$('plus');
+        var num = Number(sum.value);
+        addEvent(plus,"click",()=>{
+            num+=1;
+            sum.value=num;
+            if(num>=1){
+                reduce.style.opacity='1';
+                sum.style.opacity = "1"
+            }
+        });
+        addEvent(reduce,"click",()=>{
+            num-=1;
+            sum.value=num;
+            if(num<1){
+                num=0;
+                reduce.style.opacity="0";
+                sum.style.opacity="0";
+            }
+        });
+        // 左上角返回
+        var icon=$("icon");
+        addEvent(icon,"click",()=>{
+            history.go(-1);
+        })
+    })
+</script>
+
+</html>

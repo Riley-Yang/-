@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../common/consumer/js/mobile.js"></script>
+    <link rel="stylesheet" href="../../common/consumer/css/common.css">
+    <link rel="stylesheet" href="../css/xf-report.css">
+    <title>举报商家</title>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <!-- <a href="#"> -->
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-dingwei"></use>
+            </svg>
+            <p id="address">举报商家</p>
+            <!-- </a> -->
+        </div>
+    </header>
+    <section>
+        <div class="sjname">
+            <img src="../img/coffee.webp" alt="">
+            <span>连咖啡Coffee Box</span>
+        </div>
+        <div class="jbstyle">
+            <span>举报类型</span>
+            <select name="jbstyle" id="jbstyle">
+                <option value="0">选择举报类型</option>
+                <option value="1">商家资质问题</option>
+                <option value="2">商品价格问题</option>
+                <option value="3">商品品类问题</option>
+                <option value="4">商家logo问题</option>
+                <option value="5">商家配送问题</option>
+                <option value="6">其他问题</option>
+            </select>
+        </div>
+        <div class="assess-img">
+            <button id="addimg" class="add-img">+</button>
+            <img src="../img/assess-img1.webp" alt="">
+            <img src="../img/assess-img1.webp" alt="">
+        </div>
+        <textarea name="" id="report-xx" cols="30" rows="10" placeholder="补充更多信息以便使我们更快帮你解决。。。(必填)"></textarea>
+        <button id="btn" class="btn">提交</button>
+    </section>
+</body>
+</html>

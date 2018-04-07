@@ -6,7 +6,7 @@ header{
     position: relative;
 }
 header h4{
-    padding:0.2rem 0.3388rem;
+    padding:0.25rem 0.4388rem;
     font-size: 0.3rem;
     letter-spacing:3px;
     font-weight: normal;
@@ -28,14 +28,14 @@ header .icon:nth-child(1){
     color:#fff;
 }
 .yonghu .icon{
-    width:1.2rem;
+    width:1rem;
     position: absolute;
     left:0.5rem;
 }
 .wo-login .wo-aside{
     position:absolute;
     top:0.67rem;;
-    left:2.11rem;
+    left:2rem;
     font-size: .27rem;
 }
 .wo-login .wo-aside h4{
@@ -66,7 +66,7 @@ content{
     font-size:.3rem;
 }
 .item .icon{
-    width:.5rem;
+    width:.4rem;
     height:0.51rem;
     margin:0.262rem 0.37rem; 
     color:#00a7ff;

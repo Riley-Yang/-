@@ -63,7 +63,7 @@ content .fuli{
 }
 section{
     width:6.4rem;
-    height:2rem;
+    height:1.8rem;
     overflow: hidden;
     margin-top:.5rem;
     margin-bottom: 0.5rem;
@@ -80,8 +80,8 @@ section img{
 }
 section .aside{
     height:1.23rem;
-    width:4rem;
-    padding-left:34px;
+    width:4.4rem;
+    padding-left:0.308rem;
     flex-shrink:1; 
     text-align:left;
     font-size: .2rem;
@@ -100,7 +100,7 @@ section .aside{
 }
 .aside .aside-con{
     height:1.5rem;
-    margin-top:-3rem;
+    margin-top:-3.1rem;
 }
 .aside .aside-con .icon{
     width:.2rem;
@@ -113,9 +113,9 @@ section .aside{
 .aside .aside-con span{
     margin:.2rem;
     position:relative;
-    top:0.3542rem;
+    top:0.35rem;
 }
 .aside .aside-con p{
-    margin-top: 0.1386rem; 
+    margin-top: 0.2386rem; 
     margin-left: -0.2rem;
 }

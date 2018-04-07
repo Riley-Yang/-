@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="../../common/js/mobile.js"></script>
+    <script src="../../common/consumer/js/mobile.js"></script>
     <script src="../js/iconfont.js"></script>
-    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="../../common/consumer/css/common.css">
     <link rel="stylesheet" href="../css/xf-wode.css">
     <title>我的页</title>
 </head>
@@ -30,17 +30,26 @@
                 <use xlink:href="#icon-yonghu"></use>
             </svg>
         </div>
-        
+
         <div class="wo-aside">
-            <a href="xf-login.html">
+            <a id="nLog" href="xf-login.html">
                 <h4>立即登录</h4>
             </a>
+            <a id="yLog" href="xf-info.html">
+                <h4></h4>
+            </a>
             <span>登录后可享受更多特权</span>
-            <a href="xf-login.html">
+            <a id="yLogJ" href="xf-info.html">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-jiantouyou"></use>
                 </svg>
             </a>
+            <a id="nLogJ" href="xf-login.html">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-jiantouyou"></use>
+                </svg>
+            </a>
+            
         </div>
     </div>
     <content>
@@ -73,13 +82,13 @@
                 <use xlink:href="#icon-dianzan"></use>
             </svg>
             <span>欢迎评分</span>
-        </div>    
-        <button class="quit" id="quit">退出登录</button>    
+        </div>
+        <button class="quit" id="quit">退出登录</button>
     </content>
 
     <footer>
         <div class='wai'>
-            <a href="xf-waimai.html">
+            <a href="xf-waimai.shtml">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-waimai"></use>
                 </svg>
@@ -104,5 +113,29 @@
         </div>
     </footer>
 </body>
+<script src="../../common/js/addevent.js"></script>
+<script src="../../common/js/ajax.js"></script>
+<script>
+    addEvent(window, "load", () => {
+        let $ = id => { return document.getElementById(id); }
+        let nLog = $("nLog");
+        let yLog = $("yLog");
+        let nLogJ=$("nLogJ")
+        let quit=$("quit");
+        ajax("POST","../../common/php/validate.php",returnData=>{
+            let json=JSON.parse(returnData);
+            // console.log(json)
+            if(json.status=="10001"){
+                nLog.style.display="none";
+                nLogJ.style.display="none";
+                yLog.children[0].innerHTML = json.message;
+            }
+        });
+        // 退出登录
+        addEvent(quit,"click",()=>{
+            location.href="../../common/php/safeout.php";
+        })
+    });
+</script>
 
 </html>

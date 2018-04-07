@@ -1,0 +1,207 @@
+html{
+    width:6.4rem;
+}
+header .icon{
+    
+    fill: currentColor;
+    color:#fff;
+}
+#tab{
+    width:6.4rem;
+    height:.6rem;
+    /* float: left; */
+    position: relative;
+    margin-top:0.88rem;
+}
+#tab #nav{
+    width:6.4rem;
+    list-style-type: none;
+    display:flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 999;
+    background: #f5f5f5;
+}
+#nav li{
+    float: left;
+    width:2.1rem;
+    height:.6rem;
+    line-height: .6rem;
+    text-align: center;
+    font-size: .25rem;
+    color:#333;
+}
+#nav ul::after{
+    content:'';
+    display: block;
+    clear: both;
+}
+#info{
+    padding-top: 41px;
+}
+#dian{
+    position: relative;
+}
+#info .dian{
+    width:6.4rem;
+    position: absolute;
+}
+.dian ul{
+    width:1.386rem;
+    position: fixed;
+}
+.dian a{
+    color:#333;
+}
+#info li{
+    padding: 20px 0 20px 10px;
+    border-bottom:1px solid #fff;
+    background: #f8f8f8;
+    font-size: .25rem;
+}
+section{
+    position: absolute;
+    top:0;
+    width:5.014rem;
+    margin-left:1.386rem;
+    font-size: .25rem;
+    font-size: .2rem;
+}
+section span{
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-top:10px;
+}
+section .target{
+    position: relative;
+    top:-1.386rem;
+    display: block;
+    height:0;
+    overflow: hidden;
+}
+#goods{
+    padding:8px;
+    background:#fff;
+    position: relative;
+    font-size: .2rem;
+}
+#goods img{
+    width:1.5rem;
+}
+#goods .aside{
+    position: absolute;
+    left:1.9rem;
+    top:0.308rem;
+    width:2.77rem;
+}
+.aside h5{
+    font-size: .27rem;
+}
+#goods .aside p{
+    padding-top:10px;
+}
+#goods .aside p:nth-child(3){
+    font-weight: bold;
+    color:#ff6600;
+}
+/* 商家信息 */
+.sjInfo li span:nth-child(even){
+    float: right;
+    padding-right: 0.308rem;
+    color:rgb(109, 109, 109);
+}
+.sjInfo li a{
+    /* border:1px slid #000; */
+    display: block;
+    padding:10px 0;
+    width:3rem;
+    margin:0 auto;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color:#000;
+}
+/* 数量选择 */
+.aside .num{
+    position: absolute;
+    top: 60px;
+    left: 106px;
+}
+.aside #reduce,
+.aside #plus{
+    width:16px;
+    height:16px;
+    border:none;
+    border-radius:8px;
+    background: #00a7ff;   
+    color:#fff; 
+}
+.aside .num input{
+    width:25px;
+    height:13px;
+    
+}
+.aside #reduce,
+.aside #sum{
+    opacity: 0;
+}
+
+/* 评价页样式 */
+.ping{
+    position: relative;
+    width:6.4rem;
+    
+}
+.lei{
+    position: absolute;
+    background: #0ff;
+    height: 20px;
+    top: -31px;
+    left: 4px;
+}
+.lei button{
+    border: none;
+    border-radius:5px;
+    width: 59px;
+    height: 26px;
+    background: rgb(82, 182, 221);
+    color:#fff;
+    font-size: .2rem;
+}
+/* 评价内容样式 */
+.assess{
+    position: relative;
+    top:0;
+    background: #fff;
+    font-size: .25rem;
+}
+assess img{
+    wdith:40px;
+}
+.assess .uinfo{
+    position: absolute;
+    left: 80px;
+    top: 18px;
+}
+.uinfo .time{
+    position: absolute;
+    right: -178px;
+    top: 0px;
+    color: #9e9c9c;
+}
+.uinfo .attitude{
+        margin-top: 4px;
+    color:#ff6600;
+}
+.assess .assess-info{
+    /* position: absolute; */
+    margin-left:80px;
+}
+.assess-info p{
+    padding:0 10px 10px 0;
+}
+.assess .assess-info img{
+    width:76px;
+    margin-bottom: 10px;
+}
