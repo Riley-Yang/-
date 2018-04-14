@@ -24,11 +24,40 @@
 			<input type="text" class="verification" id="verification">
 			<img src="../img/yzm.png" alt="" class="yzm">
 		</div>
-		<p class="tip">用户名或密码错误</p>
+		<p class="tips"></p>
 		<button class="btn" id="btn">登陆</button>
 	</section>
 	<!-- <footer>
 		<p>Copyright    ©  2017  Yang</p>
 	</footer> -->
 </body>
+<script src="../../common/js/addevent.js"></script>
+<script src="../../common/js/ajax.js"></script>
+<script>
+	addEvent(window, 'load', () => {
+		let $ = function (id) { return document.getElementById(id); }
+		let btn = $("btn");
+		let userName = $("userName");
+		let password = $("password");
+		let tips = $("tips");
+		// 点击登陆
+		addEvent(btn, 'click', () => {
+			//执行ajax过程
+			let data = '{"userName":"' + userName.value + '","password":"' + password.value + '"}';
+			console.log(data);
+			ajax("POST", "../../common/php/xf-login.php", returnData => {
+				console.log(returnData)
+				let json = JSON.parse(returnData);
+				if (json.status == "10001") {
+					location.href = "./index.shtml";
+				} else {
+					tips.innerHTML = json.message;
+				}
+			}, "json", data);
+		});
+		//文本框得到焦点清空提示
+		addEvent(userName, "focus", () => { tips.innerHTML = ''; });
+		addEvent(password, "focus", () => { tips.innerHTML = ''; });
+	});
+</script>
 </html>

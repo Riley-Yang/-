@@ -2,10 +2,17 @@
     padding:0;
     margin:0;
 }
+.content:after{
+    content:"";
+    display: block;
+    clear: both;
+}
 #diy-right{
     position: relative;
-    z-index: -1;
-    top:50px;
+    top: -326px;
+    left: 260px;
     font-size: 30px;
-    background: #0f0;
+}
+#quit{
+    cursor: pointer;
 }
