@@ -38,7 +38,7 @@
             <a id="yLog" href="xf-info.html">
                 <h4></h4>
             </a>
-            <span>登录后可享受更多特权</span>
+            <span id="ab">登录后可享受更多特权</span>
             <a id="yLogJ" href="xf-info.html">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-jiantouyou"></use>
@@ -122,6 +122,7 @@
         let yLog = $("yLog");
         let nLogJ=$("nLogJ")
         let quit=$("quit");
+        let ab=$("ab");
         // 请求用户名
         ajax("POST","../../common/php/validate.php",returnData=>{
             let json=JSON.parse(returnData);
@@ -129,6 +130,7 @@
             if(json.status=="10001"){
                 nLog.style.display="none";
                 nLogJ.style.display="none";
+                ab.style.display="none";
                 yLog.children[0].innerHTML = json.message;
             }
         });

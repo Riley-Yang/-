@@ -165,7 +165,10 @@
         pagination: {
             el: '.swiper-pagination',
         },
-    });     
+    });
+    addEvent(window,'load',()=>{
+        
+    })
 </script>
 
 </html>

@@ -33,6 +33,7 @@
         </p>
     </content>
 </body>
+<script src="../../business/js/jquery-1.11.1.js"></script>
 <script>
     addEvent(window, 'load', () => {
         let $ = function (id) { return document.getElementById(id); }
@@ -49,7 +50,8 @@
                 console.log(returnData)
                 let json = JSON.parse(returnData);
                 if (json.status == "10001") {
-                    location.href = "./xf-waimai.shtml";
+                    btn.disabled = true;
+                    location.href = "./xf-waimai.shtml";                    
                 } else {
                     tips.innerHTML = json.message;
                 }

@@ -11,7 +11,7 @@ header("content-type:text/html;charset=utf-8");
         $fileName=$_FILES['imgFile']['name'];
         $fileNameKZ=strstr($fileName,".");
         // $gender=$_POST['gender'];
-        if(strstr(".jpg.png.gif",$fileNameKZ)){
+        if(strstr(".jpg.png.gif.webp",$fileNameKZ)){
 		if($_FILES['spic']['size']<=512000){
 			$newFileName=time()+rand(1,100000).$fileNameKZ;
             move_uploaded_file($_FILES['imgFile']['tmp_name'],'upload/'.$newFileName);
@@ -26,6 +26,6 @@ header("content-type:text/html;charset=utf-8");
 				 echo	'{"status":20001,"message":"文件大小超过500KB"}';
 				}
             }else{
-                echo	'{"status":30001,"message":"文件格式不是.jpg.png.gif"}';
+                echo	'{"status":30001,"message":"文件格式不是.jpg.png.gif.webp"}';
                 }
 ?>

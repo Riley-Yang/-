@@ -26,7 +26,7 @@
     <div id="diy-right">
         <div class="container-fluid">
             <div class="row">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#addtype">添加分类</button>
+                <button class="btn btn-primary" id="addStyle" data-toggle="modal" data-target="#addtype">添加分类</button>
                 <button class="btn btn-primary" id="addcai">添加菜品</button>
             </div>
         </div>
@@ -81,11 +81,11 @@
                         <label for="caistyle"><span style="color:brown">*</span>菜品所属分类</label>
                         <br>
                         <select name="caiStyle" id="caiStyle">
-                            <option value="999">选择类型</option>
+                            <option value="no">选择类型</option>
                         </select>
                     </div>
-                    <div class="caidis">
-                        <label for="caidis">菜品描述</label>
+                    <div class="caiDes">
+                        <label for="caiDes">菜品描述</label>
                         <br>
                         <input type="text" id="caiDes" name="caiDes" placeholder="请输入50字以内的菜品描述" maxlength="50">
                     </div>
@@ -146,30 +146,37 @@
 <script type="text/javascript">
 
     $(function () {
-        //顶部导航切换
+        //侧边栏样式
         $("#demo-list li").click(function () {
             $("#demo-list li.active").removeClass("active")
             $(this).addClass("active");
         });
+        // 点击 添加菜品 按钮显示表单
        $("#addcai").click(function(){
            $("#addcaiinfo").css("opacity","1");
+           $("#addcai").attr("disabled", "disabled");
        });
-       $("#cancel").click(function(){
-           $("#addcaiinfo").css("opacity","0");
-       });
-    //    添加菜品、图片
-        var fileM = document.getElementById("imgFile");
-        var upImg=document.getElementById("upimg");
+       // 隐藏菜品信息输入表单 清空所有已输入信息
+       $("#addStyle,#cancel").on("click",function () {
+            $("#addcaiinfo").css("opacity", "0");
+            $("#caiStyle").html("<option value='no'>选择类型</option>")
+            $("#addcai").removeAttr("disabled");
+            caiEmpty();
+        })
+       
+        // var fileM = document.getElementById("imgFile");
+        // var upImg=document.getElementById("upimg");
         var icon=document.getElementById("iconfont");
-        var saveCai=document.getElementById("saveCai");
+        // var saveCai=document.getElementById("saveCai");
+        //选择图片后显示
         $("#imgFile").on("change", function () {
             icon.style.display="none";
             $("#imgContent").attr("src", URL.createObjectURL($(this)[0].files[0]));
         });
-        addEvent(saveCai,"click",()=>{
-            if($("#caiName").val()!="" && $("#caiStyle").val()!="999" && $("#caiPrice").val()!="" && $("#hePrice").val()!="" && $("hePrice").val()!="" && $("#dang").val()!="" && $("max").val()!=""){
-                var data = new FormData($('#formData')[0]);
-                console.log(data == undefined)
+        // 上传 菜品信息 的ajax函数
+        let saveCaiAjax = ()=> {
+            if ($("#caiName").val() != "" && $("#caiStyle").val() != "no" && $("#caiPrice").val() != "" && $("#hePrice").val() != "" && $("hePrice").val() != "" && $("#dang").val() != "" && $("max").val() != "") {
+                let data = new FormData($('#formData')[0]);
                 $.ajax({
                     url: '../php/uploadcai.php',
                     type: "POST",
@@ -178,17 +185,82 @@
                     cache: "false",
                     processData: false,
                     contentType: false,
-                    success: function (data) {
-                        console.log(data)
+                    success: function (returnData) {
+                        console.log(returnData);
+                        alert("菜品信息添加成功");
+                        // 点击保存按钮 成功添加信息后清空各个输入框
+                        caiEmpty();
                     }
                 });
-            }else{
+            } else {
                 alert("请将带有星号的项填写完整！")
             }
-                
-                
+        };
+        //上传菜品信息之后清空各个输入框
+        let caiEmpty=()=>{
+            $("#caiName").val("");
+            $("#caiStyle").val("no");
+            $("#caiDes").val("");
+            $("#caiPrice").val("");
+            $("#hePrice").val("");
+            $("hePrice").val("");
+            $("#dang").val("");
+            $("#max").val("");
+            $("#imgContent").removeAttr("src");
+            icon.style.display = "block";
+            $("#imgFile").val("");
+        }
+        // 上传 菜品分类 的ajax函数
+        let saveStyleAjax=()=>{
+            if (styleName.value != "") {
+                data = '{"styleName":"' + styleName.value + '","styleDes":"' + styleDes.value + '"}';
+                ajax("POST", "../php/uploadstyle.php", returnData => {
+                    var json = JSON.parse(returnData);
+                    console.log(json)
+                    if (json.status == "10001") {
+                        console.log(json.message);
+                        alert("添加分类成功")
+                        styleName.value = "";
+                    }
+                }, "json", data);
+            } else {
+                alert("分类名称为空");
+            }
+        }
+        // 点击保存 上传菜品信息
+        addEvent(saveCai,"click",()=>{
+            saveCaiAjax();
+        })
+        
+        // 添加菜品分类
+        addEvent(styleSave, "click", () => {
+            saveStyleAjax();
+        });
+        // 点击回车 上传菜品信息
+        $("#styleName").keyup(event=> {
+            if(event.keyCode!=13) return;
+            saveStyleAjax();
+        });
+        //菜品名称框失去焦点 判断菜品名称是否重复
+        addEvent(caiStyle,"change",()=>{
+            if(document.getElementById("caiName").value=="") return ;
+            let caiName= $("#caiName").val();
+            let caiStyle=$("#caiStyle").val();
+            let data='{"caiName":"'+caiName+'","caiStyle":"'+caiStyle+'"}';
+            $.ajax({
+                url:'../php/cainame.php',
+                type:'POST',
+                data:data,
+                dataType:'JSON',
+                success:function(returnData){
+                    alert(returnData.message);
+                    $("#caiName").val("");
+                    $("#caiStyle").val("no");
+                }
+            })
         })
     });
+
     	
 </script>
 

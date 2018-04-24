@@ -4,12 +4,12 @@ $arr=json_decode(file_get_contents('php://input'),true);//获取前端通过POST
 
 include("../../common/php/conn.php");
 
-$rs=mysql_query("select styleName from foodstyle");
+$rs=mysql_query("select styleId,styleName from foodstyle");
 $count=mysql_num_rows($rs);
 
 while($arr=mysql_fetch_array($rs)){
     $a=0;
-    echo '{"status":"10001","message":"'.$arr[$a].'"};';
+    echo '{"status":"10001","styleId":"'.$arr['styleId'].'","styleName":"'.$arr['styleName'].'"};';
     $a++;
 }
 ?>

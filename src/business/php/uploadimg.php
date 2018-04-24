@@ -10,7 +10,7 @@ header("content-type:text/html;charset=utf-8");
     $fileNamekz=strstr($fileName,'.');
     $fileNewName=substr($fileName,0,strlen($fileName)-4).time().rand(1,10000).strstr($fileName,".");
     if($fileSize<2097152){
-		if(strstr(".jpg.png.gif",$fileNamekz)){
+		if(strstr(".jpg.png.gif.webp",$fileNamekz)){
 		move_uploaded_file($_FILES['file']['tmp_name'],'.\\upload\\'.$fileNewName); 
 		include("../../common/php/conn.php");
 		$num=mysql_query("insert into foodmenu(caiImg) values('$fileNewName')");
@@ -20,7 +20,7 @@ header("content-type:text/html;charset=utf-8");
 			echo '{"status":"20001","message":"图片上传失败"}'; 	
 				}
 			}else{
-				echo '{"status":"30001","message":"图片格式必须是.gif | .jpg | .npg"}'; 
+				echo '{"status":"30001","message":"图片格式必须是.gif | .jpg | .npg | .webp"}'; 
 				}
 	 }else{
 		echo '{"status":"40001","message":"图片大小超过2M"}'; 
