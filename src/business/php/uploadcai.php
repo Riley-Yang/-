@@ -17,7 +17,7 @@ header("content-type:text/html;charset=utf-8");
             move_uploaded_file($_FILES['imgFile']['tmp_name'],'upload/'.$newFileName);
             // 连接数据库
             include("../../common/php/conn.php");
-            $rs=mysql_query("insert into foodmenu(caiName,caiDes,caiStyle,caiPrice,hePrice,dang,da,caiImg,time) values('$caiName','$caiDes','$caiStyle','$caiPrice','$hePrice','$dang','$da','$fileName',now())");
+            $rs=mysql_query("insert into foodmenu(caiName,caiDes,caiStyle,caiPrice,hePrice,dang,da,caiImg,time) values('$caiName','$caiDes','$caiStyle','$caiPrice','$hePrice','$dang','$da','$newFileName',now())");
             if($rs){
                 echo	'{"status":10001,"message":"上传成功","fileName":"'.$newFileName.'"}';
             }

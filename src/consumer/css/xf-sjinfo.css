@@ -75,7 +75,7 @@ section span{
 }
 section .target{
     position: relative;
-    top:-1.386rem;
+    top:-1.4rem;
     display: block;
     height:0;
     overflow: hidden;
@@ -155,10 +155,13 @@ section .target{
 }
 .lei{
     position: absolute;
-    background: #0ff;
-    height: 20px;
-    top: -31px;
-    left: 4px;
+    z-index: 99;
+    /* background: #0ff; */
+    height: 38px;
+    top: 3px;
+    left: 23px;
+    /* height: 20px; */
+    line-height: 0px;
 }
 .lei button{
     border: none;
@@ -172,7 +175,7 @@ section .target{
 /* 评价内容样式 */
 .assess{
     position: relative;
-    top:0;
+    top:42px;
     background: #fff;
     font-size: .25rem;
 }

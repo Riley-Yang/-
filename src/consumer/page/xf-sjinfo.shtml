@@ -33,32 +33,32 @@
         <div id="info">
             <!-- 点餐开始 -->
             <div class="dian">
-                <ul>
-                    <li><a href="#rexiao">热销</a></li>
-                    <li><a href="#youhui">优惠</a></li>
-                    <li><a href="#rexue">热雪昔</a></li>
-                    <li><a href="#fangdan">防弹家族</a></li>
-                    <li><a href="#tiansheng">天生的粉</a></li>
-                    <li><a href="#reka">热咖啡</a></li>
-                    <li><a href="#bingka">冰咖啡</a></li>
-                    <li><a href="#xuexi">雪昔系列</a></li>
-                    <li><a href="#chayin">茶饮热巧</a></li>
+                <!-- 左侧 菜品分类 -->
+                <ul id="caiStyle">
+                    <!-- 动态添加菜品分类 -->
                 </ul>
             <!--include virtual="html/goods.html"-->
             <section id="section">
-                <div id="goods">
-                    <img src="../img/coffee1.webp" alt="coffe">
-                    <div class="aside">
-                        <h5>防弹咖啡</h5>
-                        <p>月售99份 好评率100%</p>
-                        <p>￥35</p>
-                        <div class="num">
-                            <button id="reduce">-</button>
-                            <input id="sum" type="text" value="0">
-                            <button id="plus">+</button>
+                <!-- <div class="9">
+                    <a class="target" name="9"></a>
+                    <span>
+                        <a>热销</a>
+                    </span>
+                    <div id="goods">
+                        <img src="../img/coffee1.webp" alt="coffe">
+                        <div class="aside">
+                            <h5>防弹咖啡</h5>
+                            <p>月售99份 好评率100%</p>
+                            <p>￥35</p>
+                            <div class="num">
+                                <button id="reduce">-</button>
+                                <input id="sum" type="text" value="0">
+                                <button id="plus">+</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                
             </section>
             </div>
             <!-- 点餐结束 -->
@@ -120,15 +120,54 @@
     </footer>
 </body>
 <script src="../../common/js/addevent.js"></script>
+<script src="../../common/js/ajax.js"></script>
+<script src="../../business/js/jquery-1.11.1.js"></script>
 <script>
     addEvent(window, 'load', () => {
-        var $ = id => { return document.getElementById(id) };
-        var nav = $("nav");
-        var info = $("info");
-        var section=$("section");
+        let $ = id => { return document.getElementById(id) };
+        let nav = $("nav");
+        let info = $("info");
+        let section=$("section");
+        let caiStyle=$("caiStyle");
+        // 请求菜品分类信息
+        ajax("POST","../../common/php/goodstyle.php",returnData=>{
+            let arr= returnData.split(";");
+            for(let i =0,len=arr.length-1;i<len;i++){
+                let json=JSON.parse(arr[i]);
+                caiStyle.innerHTML+="<li><a href='#"+json.styleId+"'>"+json.styleName+"</a></li>";
+                section.innerHTML += "<div class=cid'"+ json.styleId+"' ><a class='target' name='" + json.styleId + "'></a><span><a>" + json.styleName + "</a></span></div>"
+            }
+        },"JSON");
+        //  请求菜品信息
+        ajax("POST", "../../common/php/goodsinfo.php", returnData => {
+            let arr = returnData.split(";");
+            let json = JSON.parse(arr[0]);
+            let str = json.styleName;
+            let newstr="";
+            for (let i = 0, len = arr.length - 1; i < len; i++) {
+                let json = JSON.parse(arr[i]);
+                    console.log(json)
+                
+                if(str==json.styleName){
+                
+                // newstr+="<div id='goods'><img src='./../../business/php/upload/"+json.caiImg+"' ><div class='aside'><h5>"+ json.caiName+"</h5><p>月售99份 好评率100%</p><p>￥"+ json.caiPrice+"</p><div class='num'><button id='reduce'>-</button><input id='sum' name='dt_num' type='text' value='0'><button id='plus' >+</button></div></div></div>";
+                    // $("div[class^='cid']").attr("id","45679")
+                    // console.log(newstr)
+                    // document.getElementsByClassName(json.styleId).innerHTML="465465"
+                }else{
+                    // str=json.styleName;
+                // newstr += "<div id='goods'><img src='./../../business/php/upload/" + json.caiImg + "' ><div class='aside'><h5>" + json.caiName + "</h5><p>月售99份 好评率100%</p><p>￥" + json.caiPrice + "</p><div class='num'><button id='reduce'>-</button><input id='sum' name='dt_num' type='text' value='0'><button id='plus' >+</button></div></div></div>";
+                    
+                    
+                    // str=json.styleName;
+                    // newarr.push(json)
+                }
+            };
+        }, "JSON");
+        // tab菜单
         hidden();
         function hidden(){
-            for(var i =0;i<info.children.length;i++){
+            for(let i =0;i<info.children.length;i++){
                 info.children[i].style.display="none";
                 // section[i].style.display="none";
                 nav.children[i].style.cssText = "border-bottom:2px solid #fff";
@@ -136,7 +175,7 @@
         }
         info.children[0].style.display="block";
         nav.children[0].style.cssText = "border-bottom:2px solid #00a7ff";
-        for (var i=0;i<nav.children.length;i++){
+        for (let i=0;i<nav.children.length;i++){
             (function(i){
                 nav.children[i].onclick = function () {
                     hidden();
@@ -146,31 +185,46 @@
             })(i);
         };
         // 商品数量增减
-        var reduce=$('reduce');
-        var sum=$('sum');
-        var plus=$('plus');
-        var num = Number(sum.value);
-        addEvent(plus,"click",()=>{
-            num+=1;
-            sum.value=num;
-            if(num>=1){
-                reduce.style.opacity='1';
-                sum.style.opacity = "1"
-            }
-        });
-        addEvent(reduce,"click",()=>{
-            num-=1;
-            sum.value=num;
-            if(num<1){
-                num=0;
-                reduce.style.opacity="0";
-                sum.style.opacity="0";
-            }
-        });
+        let reduce=$('reduce');
+        let sum=$('sum');
+        let plus=$('plus');
+        // let num = Number(sum.value);
+        
+        // addEvent(plus,"click",()=>{
+        //     num+=1;
+        //     sum.value=num;
+        //     if(num>=1){
+        //         reduce.style.opacity='1';
+        //         sum.style.opacity = "1"
+        //     }
+        // });
+        //商品数量减少
+        // addEvent(reduce,"click",()=>{
+        //     num-=1;
+        //     sum.value=num;
+        //     if(num<1){
+        //         num=0;
+        //         reduce.style.opacity="0";
+        //         sum.style.opacity="0";
+        //     }
+        // });
         // 左上角返回
-        var icon=$("icon");
+        let icon=$("icon");
         addEvent(icon,"click",()=>{
             history.go(-1);
+        });
+    })
+    // 添加 减少 事件
+    $(function () {
+        $("#section").on("click", "#plus", function (e) {
+            var num = Number($("#sum").val());
+            num=num+1;
+            $("#sum").val(num)
+            if(num>0){
+                $("#reduce").css("opacity","1");
+                $("#sum").css("opacity", "1");
+            }
+            console.log($("#sum").val())
         })
     })
 </script>
