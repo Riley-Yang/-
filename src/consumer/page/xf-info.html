@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../common/js/mobile.js"></script>
+    <script src="../js/iconfont.js"></script>
+    <link rel="stylesheet" href="../../common/consumer/css/common.css">
+    <link rel="stylesheet" href="../css/xf-info.css">
+    <title>信息修改页</title>
+</head>
+<body>
+    <header>
+        <svg id="icon" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-zuojiantou"></use>
+        </svg>
+        <h4>订单</h4>
+    </header>
+    <content>
+        消费者信息修改页
+    </content>
+</body>
+<script src="./dev/jquery-1.9.1.js"></script>
+<script>
+    $(function(){
+        // 左上角返回
+        $("#icon").click(function(){
+            history.go(-1);
+        });
+        // 请求用户信息
+        $.ajax({
+            url:'../../common/php/xf-info.php',
+            success:function(data){
+
+            }
+        })
+    })
+</script>
+</html>

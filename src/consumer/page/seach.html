@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/iconfont.js"></script>
+    <script src="../../business/js/jquery-1.11.1.js"></script>
+    <script src="../../common/js/mobile.js"></script>
+    <link rel="stylesheet" href="../css/seach.css">
+    <title>外卖页</title>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <svg id="icon" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-zuojiantou"></use>
+            </svg>
+            <input id="seach" type="text" placeholder="输入商家、菜品名称">
+            <span id="btnSeach">搜索</span>
+        </div>
+    </header>
+    <!-- 动态添加搜索的信息 -->
+    <div id="footer">
+        <span class="yx">已选：0份</span>
+        <span class="zj">总计：0.00元</span>
+        <a href="javascript:;" id="pay">去结算</a>
+    </div>
+</body>
+<script>
+    $(function(){
+        // 搜索功能 start
+        $("#icon").click(function(){
+            history.go(-1);
+        })
+        $("#seach").keypress(function(event){
+            if(event.keyCode==13){
+                if($.trim($("#seach").val()) != ""){
+                    seach();
+                }else{
+                    alert("请输入关键字1");
+                };
+                
+            }
+        })
+        $("#btnSeach").click(function(){
+            if($.trim($("#seach").val())!=""){
+                seach();
+            }else{
+                alert("请输入关键字！");
+            }
+        })
+        // 搜索功能函数
+        function seach(){
+            var data=$.trim($("#seach").val());
+            if(data==""){
+                alert("请输入关键字");
+                $("#seach").val("");
+            }else{
+                var str="";
+                $.ajax({
+                    url: '../../common/php/seach.php',
+                    data: {
+                        'seach': data
+                    },
+                    type: 'POST',
+                    success: function (returnData) {
+                        let arr = returnData.split(";");
+                        arr.pop();
+                        for(var i =0,len=arr.length;i<len;i++){
+                            let json=JSON.parse(arr[i]);
+                            str=str+`<div id='content'>
+                                        <img src="../../business/php/upload/${json.caiImg}" alt="">
+                                        <ul>
+                                            <li class="name">${json.caiName}</li>
+                                            <li class="ys">月售99</li>
+                                            <li class="price">￥${json.caiPrice}</li>
+                                        </ul>
+                                        <div class="num">
+                                            <button class="reduce">-</button>
+                                            <input class="sum" type="text" value="0" data-price="${json.caiPrice}">
+                                            <button class="plus">+</button>
+                                        </div>
+                                    </div>`;
+                        }
+                        $("body").append(str)
+                    },
+                    complete:function(){
+                        var sum=0;
+                        var num=0;
+                        var sPrice=0;
+                        $(".plus").click(function(){
+                            $(this).prev().css("opacity", "1");
+                            $(this).prev().prev().css("opacity", "1")
+                            $("#footer").css("display","block");
+                            sum++;
+                            num=$(this).prev().val();   //当前商品个数
+                            num++;
+                            $(this).prev().val(num);    //增加当前商品个数
+                            $(".yx").text(`已选：${sum}份`);
+                            var price=$(this).prev().attr("data-price");    //当前商品的价格
+                            sPrice=sPrice+parseInt(price);      //总价
+                            $(".zj").text(`总计：${sPrice}元`);
+                        });
+                        $(".reduce").click(function () {
+                            sum--;
+                            num=$(this).next().val();    //减少已选商品总数
+                            num--;
+                            $(this).next().val(num); 
+                            $(".yx").text(`已选：${sum}份`);
+                            var price = $(this).next().attr("data-price");    //当前商品的价格
+                            sPrice = sPrice - parseInt(price);      //总价
+                            $(".zj").text(`总计：${sPrice}元`);
+                            if(num<1){
+                                $(this).next().css("opacity", "0");
+                                $(this).css("opacity", "0");
+                            }
+                            if(sum<1){
+                                $(this).next().css("opacity","0");
+                                $("#footer").css("display","none");
+                            }
+                        });
+                        $("#pay").click(function(){
+                            if(sPrice!=0){
+                                alert("结算成功！");
+                            }
+                        })
+                    }
+                })
+            }
+        }
+        // 搜索功能  end
+    })
+</script>
+</html>

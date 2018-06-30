@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/swiper.css">
-    <link rel="stylesheet" href="../../common/consumer/css/common.css">
-    <link rel="stylesheet" href="../css/xf-waimai.css">
+    <link rel="stylesheet" href="../css/waimai.css">
     <title>外卖页</title>
 </head>
 
 <body>
     <!--#include virtual ="./html/header.html"-->
-    <content>
+    <div class="seach">
+        <p>搜索商家、菜品名称</p>
+    </div>
+    <div id="content" class="content">
         <!-- 轮播图 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -28,7 +29,7 @@
             <div class="swiper-pagination"></div>
         </div>
         <!-- 小图标 -->
-        <div class="icon">
+        <div class="smicon">
             <ul>
                 <li class="flex-item">
                     <img src="../img/1.webp" alt="">
@@ -77,55 +78,22 @@
         <!-- 小图标结束 -->
         <img class="fuli" src="../img/fuli.webp" alt="">
         <!-- 推荐商家开始 -->
-        <div id="recommend">
-            <div class="start">
-                <span>—</span>
-                <span>推荐商家</span>
-                <span>—</span>
+        <div class="sj">
+            <div id="recommend">
+                <div class="start">
+                    <span>—</span>
+                    <span>商家信息</span>
+                    <span>—</span>
+                </div>
             </div>
+            <!-- 商家 -->
+            <!-- 动态添加商家列表 -->
         </div>
-        <!-- 商家 -->
-        <!--include virtual ="./html/shangjia.html"-->
-        <a href="./xf-sjinfo.shtml">
-            <section>
-                <ul class="section">
-                    <li class="img">
-                        <img src="../img/coffee.webp" alt="">
-                    </li>
-                    <li class="aside">
-                        <h5>
-                            <span>品牌</span>连咖啡Coffee Box（峨眉山南路）
-                        </h5>
-                        <div class="aside-con">
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-wuxing"></use>
-                            </svg>
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-wuxing"></use>
-                            </svg>
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-wuxing"></use>
-                            </svg>
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-wuxing"></use>
-                            </svg>
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-wuxing"></use>
-                            </svg>
-                            <span>5.0</span>
-                            <span>月售 2342</span>
-                            <p>
-                                <span>起送￥15 | 配送￥4</span>
-                                <span class="distance">43分钟 | 2.6km</span>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-        </a>
         <!-- 推荐商家结束 -->
-    </content>
-
+        <div class="smfoot">
+            <p>—— 我是有底线的 ——</p>
+        </div>
+    </div>
     <footer>
         <div class='wai active'>
             <a href="xf-waimai.html">
@@ -157,6 +125,7 @@
 <script src="../../common/js/mobile.js"></script>
 <script src="../js/iconfont.js"></script>
 <script src="../js/swiper.js"></script>
+<script src="./../../business/js/jquery-1.11.1.js"></script>
 <!-- swiper -->
 <script>
     var swiper = new Swiper('.swiper-container', {
@@ -166,8 +135,68 @@
             el: '.swiper-pagination',
         },
     });
-    addEvent(window,'load',()=>{
-        
+    $(function(){
+        $.ajax({
+            url:'../../common/php/sjSummary.php',
+            type:'GET',
+            success:function(returnData){                
+                var data = returnData.split(";");
+                data.pop();
+                var str="";
+                for(var i=0,len=data.length;i<len;i++){
+                    str=str+`
+                    <a href="javascript:;" class="subbtn">
+                    <input type="hidden" value="${JSON.parse(data[i]).sjId}" />
+                    <section>
+                        <ul class="section">
+                        <li class="sj-logo">
+                            <img src="../img/coffee.webp" alt="">
+                        </li>
+                        <li class="aside">
+                            <h5>
+                                <span class="pp">品牌</span><span id="dpName">${JSON.parse(data[i]).dpName}</span>
+                            </h5>
+                            <div class="aside-con">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-wuxing"></use>
+                                </svg>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-wuxing"></use>
+                                </svg>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-wuxing"></use>
+                                </svg>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-wuxing"></use>
+                                </svg>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-wuxing"></use>
+                                </svg>
+                                <span>5.0</span>
+                                <span>月售 2342</span>
+                                <p>
+                                    <span>起送￥15 | 配送￥4</span>
+                                    <span class="distance">43分钟 | 2.6km</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    </section>
+                    </a>`;
+                }
+                $(".sj").append(str);
+            },
+            complete:function(){
+                $(".subbtn").click(function(e){
+                    var key=$(this).children().eq(0).val();
+                    sessionStorage.setItem("sjId", key);
+                    location.href="./xf-sjinfo.shtml";
+                })
+            }
+        });
+        $(".seach").click(function(){
+            location.href="./seach.html";
+        })
     })
 </script>
 

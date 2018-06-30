@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../common/consumer/css/common.css">
+    <link rel="stylesheet" href="../css/confirm.css">
+    <link rel="stylesheet" href="../css/address.css">
+    <script src="../js/iconfont.js"></script>
+    <title>选择收货地址</title>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <!-- <a href="#"> -->
+            <svg id="icon" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-zuojiantou"></use>
+            </svg>
+            <p id="address">
+                <a href="javascript:;">选择收获地址</a>
+                <a href="javascript:;" id="add">新增地址</a>
+            </p>
+            <!-- </a> -->
+        </div>
+    </header>
+    <div class="defa">
+        <img src="../img/digndan.png" alt="">
+        <p id="no">暂无地址</p>
+    </div>
+    <div id="address1">
+        <button id="cancel">x</button>
+        <form>
+            <table class="table">
+                <tr>
+                    <td><label for="name">姓名</label></td>
+                    <td><input name="name" type="text" placeholder="姓名"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="radio" name="sex" value="1" class="sex" checked><label for="man">先生</label>
+                        <input type="radio" name="sex" value="0" class="sex"><label for="men">女士</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="phone">电话</label></td>
+                    <td><input type="text" name="phone" id="phone" placeholder="手机号码"></td>
+                </tr>
+                <tr>
+                    <td><label for="addres">地址</label></td>
+                    <td><input type="text" name="addres" id="addres" placeholder="收货地址"></td>
+                </tr>
+            </table>
+        </form>
+        <button id="btn-save">保存</button>
+    </div>
+    
+</body>
+<script src="dev/jquery-1.9.1.js"></script>
+<script src="../../common/js/mobile.js"></script>
+<script>
+    // 左上角箭头返回
+    $(function(){
+        $("#icon").click(function () {
+            history.go(-1);
+        });
+        $("#add").click(function(){
+            $("#address1").css("display","block")
+        })
+        $("#cancel").click(function(){
+            $("#address1").css("display","none")
+        })
+        $("#btn-save").click(function () {
+            var x=$("form").serialize();
+            console.log(x);
+            
+            $.ajax({
+                url:'../../common/php/address.php',
+                type:"GET",
+                // dataType:"JSON",
+                data:x,
+                success:function(returnData){
+                    var json=JSON.parse(returnData);
+                    var str=JSON.stringify($("#addres").val());
+                    if(json.status==="10001"){
+                        sessionStorage.setItem('address',str);
+                        location.href="xf-confirm.html";
+                        alert(json.message)
+                    }
+                }
+            })
+            
+            
+        })
+    })
+        
+</script>
+</html>

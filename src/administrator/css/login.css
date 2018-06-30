@@ -22,6 +22,7 @@ body{
 section{
 	margin:0 auto;
 	margin-top: 96px;
+	padding-top: 50px;
 	width:521px;
 	height:310px;
 	/*border:1px solid #f0f;*/
@@ -69,30 +70,12 @@ input{
 	bottom:0;
 	left:40px;
 }
-/*验证码*/
-.ad-yzm{
-	width:300px;
-	height:60px;
-	margin-left: 140px;
-	position: relative;
-}
-.ad-yzm input{
-	width:100px;
-	position: absolute;
-	bottom:0;
-}
-.yzm{
-	width:100px;
-	position: absolute;
-	bottom:0;
-	left:130px;
-}
+
 /*提示*/
-.tip{
-	margin-left: 140px;
-	margin-top: 20px;
-	font-size: 14px;
-	color:#fff;
+p#tips {
+    text-align: center;
+    margin-top: 13px;
+    color: #900;
 }
 /*登陆按钮*/
 .btn{

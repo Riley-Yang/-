@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>商家后台管理</title>
+
+<link href="../css/jquery-accordion-menu.css" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+<!-- Icons -->
+<link href="../assets/css/icons.css" rel="stylesheet" />
+<link href="../assets/css/bootstrap.css" rel="stylesheet" />
+<link href="../assets/css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/plugins.css">
+<link rel="stylesheet" href="../css/iconfont.css">
+<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+	<!-- header -->
+<!--#include virtual="html/header.html"-->
+	<!-- 侧边栏 -->
+<!--#include virtual="html/asside.html"-->
+<div id="diy-right">
+	<p class="ding">暂无待审核信息</p>
+</div>
+
+
+<script src="../js/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="../js/jquery-accordion-menu.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	$(function () {
+		//顶部导航切换
+		$("#demo-list li").click(function () {
+			$("#demo-list li.active").removeClass("active")
+			$(this).addClass("active");
+		});
+	});
+</script>
+</body>
+<script src="../../common/js/addevent.js"></script>
+<script src="../../common/js/ajax.js"></script>
+<script src="../js/safeout.js"></script>
+<script src="../js/buscommon.js"></script>
+</html>

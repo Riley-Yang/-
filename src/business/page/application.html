@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/application.css">
+    <title>商家店铺资格申请</title>
+</head>
+<body>
+    <header>
+        商家店铺资格申请
+    </header>
+    <container>
+            <div class="nav">
+                <ul>
+                    <li class="active">1、店铺信息</li>
+                    <li>2、资质信息</li>
+                    <li>3、等待审核通过</li>
+                </ul>
+            </div>
+        <div class="dpinfo">
+        <form id="dpInfo">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><span class="xing">*</span>店铺名称：</td>
+                        <td>
+                            <input type="text" id="dpName" name="dpName" placeholder="请与门店照片上的名称保持一致">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="xing">*</span>店铺电话：</td>
+                        <td>
+                            <input type="text" id="dpPhone" name="dpPhone" placeholder="请输入店铺电话" maxlength="11">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="xing">*</span>联系人姓名：</td>
+                        <td>
+                            <input type="text" id="sjName" name="sjName" placeholder="请填写联系人姓名">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="xing">*</span>联系人电话：</td>
+                        <td>
+                            <input type="text" id="sjPhone" name="sjPhone" placeholder="请填写联系人电话" maxlength="11">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="xing">*</span>详细地址：</td>
+                        <td>
+                            <input type="text" id="dpAddress" name="dpAddress" placeholder="请填写店铺详细地址到门牌号">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="xing">*</span>店铺照片：</td>
+                        <td>
+                            <input type="file" name="dpImg" id="dpImg" class="dpImg">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="xing">*</span>店内照片：</td>
+                        <td>
+                            <input type="file" name="dnImg" id="dnImg1">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+            <button id="dpSave" class="btn">提交并进入下一步</button>
+        </div>
+            <!-- <img class="loadgif" src="../../common/img/load.gif" alt="">         -->
+        <div id="qualification" class="qualification">
+            <p id="cardStyle" class="style">证件类型：身份证</p>
+            <div id="idcard" class="idcard">
+            <form id="zzinfo">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><span class="xing">*</span>真实姓名：</td>
+                            <td>
+                                <input type="text" id="sjName" name="sjName" placeholder="请填写姓名">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="xing">*</span>证件号码：</td>
+                            <td>
+                                <input type="text" id="sjCard" name="sjCard" placeholder="请填写证件号码">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="xing">*</span>证件正面照：</td>
+                            <td>
+                                <input type="file" id="cardImg" name="cardImg" placeholder="请填写联系人姓名">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="xing">*</span>证件反面照：</td>
+                            <td>
+                                <input type="file" id="cardImg1" name="cardImg1" placeholder="请填写联系人电话">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 主体资质 -->
+            <p id="cardStyle" class="style">主体资质：营业执照</p>
+            <div id="idcard" class="idcard">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="xing">*</span>单位名称：</td>
+                            <td>
+                                <input type="text" id="dpName" name="dpName" placeholder="请填写单位名称">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="xing">*</span>法定代表人：</td>
+                            <td>
+                                <input type="text" id="sjName" name="sjName" placeholder="请填写法定代表人">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="xing">*</span>注册号：</td>
+                            <td>
+                                <input type="text" id="zcId" name="zcId" placeholder="请填写注册号">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="xing">*</span>注册地址：</td>
+                            <td>
+                                <input type="text" id="zcAddress" name="zcAddress" placeholder="请填写注册地址">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="xing">*</span>资质照片：</td>
+                            <td>
+                                <input type="file" id="zzImg" name="zzImg" placeholder="请填写注册地址">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            </div>
+            <button id="back" class="back">返回上一步</button>
+            <button id="save" class="save">保存并退出</button>
+        </div>
+        <div class="wait">
+            <h3>您的信息已提交给系统管理员，</h3>
+            <h3>稍后管理员会给您电话联系，</h3>
+            <h3>请保持您的电话畅通，</h3>
+            <h3>感谢您对我们的信任！</h3>
+            <h4><span id="time">3</span>秒后即将跳转</h4>
+        </div>
+    </container>
+</body>
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script>
+    $(function(){
+        // 提交进入下一步按钮
+        $("#btn").click(function(){
+            $(".dpinfo").css("display","none");
+            
+        })
+        // 返回按钮
+        $("#back").click(function(){
+            $(".dpinfo").css("display", "block");
+            $(".nav>ul>li").eq(1).removeClass("active");
+            $("#qualification").css("display", "none");
+        })
+        // 保存按钮
+        $("#save").click(function(){
+            $("#qualification").css("display", "none");
+            $(".nav>ul>li").eq(2).addClass("active");
+            $(".wait").css("display","block");
+            back();
+        })
+        var num = 4;
+        function back() {
+            setInterval(function () {
+                --num;
+                document.getElementById("time").innerHTML = num;
+                if (num <= 0) {
+                    location.href = "./login.html";
+                }
+            }, 1000);
+        };
+        // 提交店铺信息
+        $("#dpSave").click(function(){
+                    
+            let dpInfo = new FormData($("#dpInfo")[0]);
+            // console.log(dpInfo.getAll('dpImg')[0].name);
+            $.ajax({
+                url:'../php/saveDpInfo.php',
+                type:'POST',
+                data:dpInfo,
+                cache:'false',
+                dataType:'json',
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    if(data.status=='10001'){
+                        $(".dpinfo").css("display","none");
+                        $(".loadgif").show();
+                        $(".nav>ul>li").eq(1).addClass("active");
+                        $("#qualification").css("display", "block");
+                    }
+                    
+                }
+            })
+        })
+        
+        
+    })
+</script>
+</html>

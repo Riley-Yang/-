@@ -1,0 +1,204 @@
+@charset "utf-8";
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-family: '微软雅黑';
+    overflow-x: hidden;
+}
+ul{
+    list-style-type: none;
+}
+/* ****************************header start*/
+header{
+    width:6.4rem;
+    height: 0.877rem;
+    line-height: 0.877rem;
+    position: fixed;
+    z-index: 999;
+    top:0;
+    font-size: 0.3rem;
+    background: #00a7ff;
+    color:#fff;
+}
+header .icon {
+    width: 20px;
+    height: 37px;
+    float: left;
+    margin:10px 10px 0 20px;
+    vertical-align: 1em;
+    fill: currentColor;
+    overflow: hidden;
+    outline: none;
+}
+/* ****************************header end */
+.seach{
+    position: relative;
+    top: 58px;
+    height: 50px;
+    background: #00a7ff;
+    font-size: .3rem;
+    color: #ccc;
+}
+.seach p {
+    width: 6rem;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 auto;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 1px;
+    background: #fff;
+}
+.content{
+    margin-top: 1px;
+}
+/* swiper */
+.swiper-container{
+    width:100%;
+    top:0.877rem;
+}
+.swiper-wrapper{
+    width:100%;
+}
+.swiper-wrapper img{
+    width:100%;
+}
+/* swiper end */
+/* 小图标 start*/
+#content .smicon{
+    width:6.4rem;
+    margin-top:0.8rem;
+    overflow: hidden;
+}
+.smicon ul{
+    width:6.4rem;
+    list-style-type: none;
+    display:flex;
+    justify-content:center;
+}
+.smicon li{
+    width:1.2rem;
+    text-align:center;
+}
+.smicon img{
+    width:1rem;
+}
+.flex-item{
+    flex-shrink: 1;
+}
+.flex-item p{
+    margin-top: -.2rem;
+    font-size: .2rem;
+    color:#666;
+}
+/* 小图标 end */
+/* 中间图片 */
+#content .fuli{
+    display:block;
+    width:6rem;
+    margin:0 auto;
+    margin-top: .4rem;
+}
+/* 商家信息 start */
+.sj{
+    font-size: .25rem;
+}
+#recommend .start{
+    margin-top: .3rem;
+    text-align:center;
+    font-size:.3rem;
+    color:#333;
+}
+section{
+    width:6.4rem;
+    height:1.8rem;
+    overflow: hidden;
+    margin-top:.5rem;
+    position: relative;
+    box-shadow:0px 1px 0 #000;
+    color:#333;
+}
+.section{
+    padding-top:9px;
+}
+.section .sj-logo{
+    padding-left:15px;
+}
+.section img{
+    width:1.5rem;
+}
+.aside{
+    width: 4rem;
+    position: absolute;
+    right: 23px;
+    top: 0.2344rem;
+}
+.aside h5 .pp{
+    padding:4px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background: #ffd000;
+}
+.aside-con{
+    margin-top:10px;
+}
+.aside-con p{
+    margin-top: 15px;
+}
+.aside .aside-con .icon{
+    width:.2rem;
+    height:0.154rem;
+    position: relative;
+    /* top:1.4168rem; */
+    fill: currentColor;
+    overflow: hidden;
+    color:#ffd000;
+}
+/* 商家信息 end */
+/* smfoot start*/
+.smfoot{
+    height: 1.5rem;
+    margin-top: .3rem;
+    font-size: .3rem;
+    vertical-align: top;
+    text-align: center;
+    color: #ccc;
+}
+/* smfoot end */
+/* footer start */
+footer{
+    width:6.4rem;
+    height:0.877rem;
+    line-height: 0.877rem;
+    position:fixed;
+    z-index: 999;
+    bottom:0;
+    box-shadow:0 -1px 0 #999;
+    background:#f7f7f7;
+    font-size: 0.3rem;
+}
+footer div{
+    float: left;
+    width:2.1rem;
+    text-align:center;
+}
+footer a{
+    color:#333;
+}
+footer .icon {
+   width: 0.385rem; 
+   height: 0.42rem;
+   vertical-align: 1em;
+   fill: currentColor;
+   overflow: hidden;
+}
+footer .active a{
+    color:#00a7ff;
+}
+footer p{
+    font-size: 0.2rem;
+    margin-top: -0.9rem;
+}
+/* footer end */

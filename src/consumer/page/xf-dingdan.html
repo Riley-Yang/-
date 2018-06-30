@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../../common/js/mobile.js"></script>
     <script src="../js/iconfont.js"></script>
-    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="../../common/consumer/css/common.css">
     <link rel="stylesheet" href="../css/xf-dingdan.css">
     <title>订单页</title>
 </head>
@@ -19,10 +19,9 @@
     <content>
         <div class="defa">
             <img src="../img/digndan.png" alt="">
-            <a href="xf-login.html">
+            <a id="no" href="xf-login.html">
                 <button class="dd-login" id="dd-login">立即登录</button>
             </a>
-            
         </div>
     </content>
     
@@ -53,5 +52,21 @@
         </div>
     </footer>
 </body>
+<script src="../../business/js/jquery-1.11.1.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            url: '../../common/php/dingdan.php',
+            type: "GET",
+            success:function(returnData){
+                var json=JSON.parse(returnData);
+                if(json.status=="10001"){
+                    $("#dd-login").css("display","none");
+                    $(".defa").append("<span>暂无订单</span>")
+                }
+            }
+        })
 
+    })
+</script>
 </html>

@@ -1,0 +1,148 @@
+#diy-right .row{
+    padding: 6px 0 10px 20px;
+    box-shadow: 8px 0px 20px 0px #333;
+    position: fixed;
+    z-index: 999;
+    width: 2000px;
+    background: #fff;
+}
+#diy-right .row a{
+    margin-left: 10px;
+}
+#diy-right .cai{
+    width: 750px;
+    height:245px;
+    margin: 15px 0 0 15px;
+    padding: 20px 0 0 30px;
+    position: relative;
+    box-shadow:0px 3px 12px -3px #333;
+}
+.cai input{
+    width:400px;
+    margin:10px 0;
+    padding:10px;
+    border:1px solid #75b9e6;
+    border-radius:3px;
+    color:rgb(129, 127, 127);
+    font-family: "微软雅黑";
+    font-size: 16px;
+}
+.cai .caistyle{
+    position: absolute;
+    top: 20px;
+    left: 500px;
+}
+.cai .caistyle select{
+    margin-top: 10px;
+    border: 1px solid #75b9e6;
+    border-radius:3px;
+    width: 150px;
+    font-size: 16px;
+    padding: 8px;
+}
+/* 价格、数量 */
+#diy-right .sum{
+    height:215px;
+    margin: 15px 0 0 15px;
+    padding: 20px 0 0 30px;
+    width: 750px;
+    position: relative;
+    box-shadow:0px 3px 12px -3px #333;
+}
+.sum .price label{
+    margin-bottom: 15px;
+}
+.sum .num label{
+    margin:10px 0;
+}
+.input-group .form-control {
+    width: 275px;
+}
+.sum .hezi{
+    position: absolute;
+    top:20px;
+    left:390px;
+}
+.sum .fg{
+    font-size: 25px;
+    margin:0 10px;
+}
+.sum .dang,
+.sum .max{
+    width:100px;
+    padding:5px;
+    border:1px solid #75b9e6;
+    border-radius:3px;
+    color:rgb(129, 127, 127);
+    font-family: "微软雅黑";
+    font-size: 16px;
+}
+/* 餐品图片 */
+.img{
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    left: 780px;
+    top: 65px;
+    padding:20px;
+    box-shadow: 0px 3px 12px -3px #333;
+}
+.img .upimg{
+    width:200px;
+    height:200px;
+    margin:0 auto;   
+    margin-top: 30px; 
+    border:1px solid rgb(191, 190, 190);
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+}
+.img .upimg i{
+    font-size: 100px;
+}
+.img img{
+    width:200px;
+}
+/* 保存按钮 */
+#diy-right .up {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+#addcaiinfo{
+    display: none;
+    position: relative;
+    top:40px;
+    z-index: 100;
+}
+/* 菜品编辑样式 */
+.editcai{
+    width:1065px;
+    /* height:500px; */
+    margin: 66px 0 0 15px;
+    padding: 20px 0 0 30px;
+    position: absolute;
+    z-index: 99;
+    top:0;
+    left:0;
+    display: none;
+    box-shadow: 0px 3px 12px -3px #333;
+}
+.editcai #seachbox #seachText{
+    height: 28px;
+    border-radius: 3px;
+    border: 1px solid;
+    font-size: 16px;
+    padding: 3px;
+}
+#tbody img{
+    display: block;
+    width:300px;
+    margin:0 auto;
+}
+button{
+    cursor: pointer;
+}
+.table > tbody > tr > td{
+    text-align: center;
+    vertical-align: middle;
+}

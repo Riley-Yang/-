@@ -1,0 +1,134 @@
+*{
+    margin:0;
+    padding: 0;
+}
+ul{
+    list-style-type: none;
+}
+body{
+    padding-bottom: 2rem;
+}
+header{
+    width:6.4rem;
+    height: 0.877rem;
+    line-height: 0.877rem;
+    position: fixed;
+    z-index: 999;
+    top:0;
+    font-size: 0.3rem;
+    
+    color:#333;
+}
+header .icon {
+    width: 20px;
+    height: 37px;
+    float: left;
+    margin:10px 10px 0 20px;
+    vertical-align: 1em;
+    fill: currentColor;
+    overflow: hidden;
+}
+header input{
+    position: relative;
+    top: -3px;
+    width: 280px;
+    font-size: 14px;
+    padding: 5px;
+    padding-left: 10px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background: #f8f8f8;
+}
+header span {
+    margin-left: 5px;
+}
+#content img{
+    margin-left: 55px;
+    width: 100px;
+}
+#content{
+    position: relative;
+    width: 100%;
+    height: 1.5rem;
+    top: 0.877rem;
+    font-size: .2rem;
+}
+#content ul{
+    position: absolute;
+    top: 15px;
+    left: 180px;
+}
+#content .name{
+    font-weight: bold;
+    font-size: .27rem;
+}
+#content .ys{
+    margin-top: 10px;
+}
+#content .price{
+    margin-top: 10px;
+    color: #ff6600;
+    font-weight: bold;
+}
+.aside .num{
+    position: absolute;
+    top: 60px;
+    left: 106px;
+}
+.num{
+    position: relative;
+    left:250px;
+    top:-30px;
+    width:130px;
+}
+.reduce,
+.plus{
+    width:16px;
+    height:16px;
+    border:none;
+    border-radius:8px;
+    background: #00a7ff;   
+    color:#fff; 
+}
+.sum{
+    width: 55px;
+    height: 13px;
+    border: none;
+    border-bottom: 1px solid #333;
+    text-align: center;
+    padding: 3px;
+    font-size: 14px;
+    color: #ff6600;
+    font-weight: bold;
+}
+.reduce,
+.sum{
+    opacity: 0;
+}
+#footer{
+    display: none;
+    height:70px;
+}
+#footer{
+    width: 6.4rem;
+    overflow: hidden;
+    height: 0.877rem;
+    line-height: 0.877rem;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    box-shadow: 0 -1px 0 #999;
+    background: #f7f7f7;
+    font-size: .2rem;
+    font-weight: bold;
+}
+#footer span{
+    margin-left: 15px;
+    color:#f03c03;
+}
+#footer #pay{
+    float:right;
+    padding:0 50px;
+    background: deepskyblue;
+    color:#fff;
+}

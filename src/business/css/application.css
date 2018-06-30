@@ -1,0 +1,109 @@
+*{
+    padding:0;
+    margin:0;
+}
+ul{
+    list-style-type: none;
+}
+table .xing{
+    color:#f56c6c;
+}
+header{
+    height: 50px;
+    line-height: 50px; 
+    padding-left: 150px;
+    background: #75b9e6;
+    color:#fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav{
+    width:900px;
+    margin:30px auto;
+    margin-top: 60px;
+    padding:20px 0;
+    border-radius: 5px;
+    background: #f5f7fa;
+}
+.nav li{
+    float: left;
+    width:300px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.active{
+    color:#5cb87a;
+}
+td{
+    border:none;
+}
+container .table{
+    width:800px;
+    margin:0 auto;
+    
+    text-align: center;
+    font-size: 18px;
+}
+.table input{
+    width:500px;
+    padding:3px 15px;
+    border: none;
+    outline: none;
+    /* border-bottom: 1px solid #ccc; */
+    font-size: 16px;
+}
+.btn{
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+    padding:10px 20px;
+    border:none;
+    border-radius: 4px;
+    background: #75b9e6;
+    color:#fff;
+}
+/* 资质信息样式 */
+.style{
+    margin:25px 0;
+}
+.qualification{
+    width:800px;
+    margin:0 auto;
+    margin-bottom: 30px;
+    display: none;
+    font-size: 18px;
+}
+.idcard{
+    border:1px solid #ccc;
+    border-top: none;
+    border-radius: 3px;
+}
+.back{
+    margin-left: 220px;
+    margin-right: 30px;
+    margin-top: 20px;
+    padding:8px 40px;
+    background: #fff;
+    border-radius: 5px;
+    border:1px solid #888;
+}
+.save{
+    padding:8px 40px;
+    background: #fff;
+    border-radius: 5px;
+    border:1px solid #888;
+}
+.qualification button:hover{
+    background: #e8f3ff;
+    color:#1989fa;
+    border:1px solid #a3d0fd;
+}
+/* 等待审核通过 */
+.wait{
+    display: none;
+    width:800px;
+    margin:0 auto;
+    text-align: center;
+    color:#5cb87a;
+}

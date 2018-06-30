@@ -131,7 +131,7 @@
                 nLog.style.display="none";
                 nLogJ.style.display="none";
                 ab.style.display="none";
-                yLog.children[0].innerHTML = json.message;
+                yLog.children[0].innerHTML = json.userName;
             }
         });
         // 退出登录
@@ -139,7 +139,7 @@
             ajax("POST", "../../common/php/safeout.php", returnData => {
                 let json = JSON.parse(returnData);
                 if (json.status == "10001") {
-                    location.href = "./xf-login.html";
+                    location.href = "./xf-waimai.shtml";
                 }
             }, "json");
         });

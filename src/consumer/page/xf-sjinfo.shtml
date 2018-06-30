@@ -15,12 +15,10 @@
 <body>
     <header>
         <div id="header">
-            <!-- <a href="#"> -->
             <svg id="icon" class="icon" aria-hidden="true">
                 <use xlink:href="#icon-zuojiantou"></use>
             </svg>
-            <p id="address">连咖啡Coffee Box</p>
-            <!-- </a> -->
+            <p id="address"></p>
         </div>
     </header>
 
@@ -37,29 +35,14 @@
                 <ul id="caiStyle">
                     <!-- 动态添加菜品分类 -->
                 </ul>
-            <!--include virtual="html/goods.html"-->
-            <section id="section">
-                <!-- <div class="9">
-                    <a class="target" name="9"></a>
-                    <span>
-                        <a>热销</a>
-                    </span>
-                    <div id="goods">
-                        <img src="../img/coffee1.webp" alt="coffe">
-                        <div class="aside">
-                            <h5>防弹咖啡</h5>
-                            <p>月售99份 好评率100%</p>
-                            <p>￥35</p>
-                            <div class="num">
-                                <button id="reduce">-</button>
-                                <input id="sum" type="text" value="0">
-                                <button id="plus">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                
-            </section>
+                <section id="section">
+                    <img class="load" src="../../common/img/load.gif" alt="">
+                </section>
+                <div id="footer">
+                    <span class="yx">已选：0份</span>
+                    <span class="zj">总计：0.00元</span>
+                    <a href="javascript:;" id="pay">去结算</a>
+                </div>
             </div>
             <!-- 点餐结束 -->
             <!-- 评价 -->
@@ -115,9 +98,7 @@
             
         </div>
     </div>
-    <footer>
         
-    </footer>
 </body>
 <script src="../../common/js/addevent.js"></script>
 <script src="../../common/js/ajax.js"></script>
@@ -127,49 +108,13 @@
         let $ = id => { return document.getElementById(id) };
         let nav = $("nav");
         let info = $("info");
-        let section=$("section");
         let caiStyle=$("caiStyle");
-        // 请求菜品分类信息
-        ajax("POST","../../common/php/goodstyle.php",returnData=>{
-            let arr= returnData.split(";");
-            for(let i =0,len=arr.length-1;i<len;i++){
-                let json=JSON.parse(arr[i]);
-                caiStyle.innerHTML+="<li><a href='#"+json.styleId+"'>"+json.styleName+"</a></li>";
-                section.innerHTML += "<div class=cid'"+ json.styleId+"' ><a class='target' name='" + json.styleId + "'></a><span><a>" + json.styleName + "</a></span></div>"
-            }
-        },"JSON");
-        //  请求菜品信息
-        ajax("POST", "../../common/php/goodsinfo.php", returnData => {
-            let arr = returnData.split(";");
-            let json = JSON.parse(arr[0]);
-            let str = json.styleName;
-            let newstr="";
-            for (let i = 0, len = arr.length - 1; i < len; i++) {
-                let json = JSON.parse(arr[i]);
-                    console.log(json)
-                
-                if(str==json.styleName){
-                
-                // newstr+="<div id='goods'><img src='./../../business/php/upload/"+json.caiImg+"' ><div class='aside'><h5>"+ json.caiName+"</h5><p>月售99份 好评率100%</p><p>￥"+ json.caiPrice+"</p><div class='num'><button id='reduce'>-</button><input id='sum' name='dt_num' type='text' value='0'><button id='plus' >+</button></div></div></div>";
-                    // $("div[class^='cid']").attr("id","45679")
-                    // console.log(newstr)
-                    // document.getElementsByClassName(json.styleId).innerHTML="465465"
-                }else{
-                    // str=json.styleName;
-                // newstr += "<div id='goods'><img src='./../../business/php/upload/" + json.caiImg + "' ><div class='aside'><h5>" + json.caiName + "</h5><p>月售99份 好评率100%</p><p>￥" + json.caiPrice + "</p><div class='num'><button id='reduce'>-</button><input id='sum' name='dt_num' type='text' value='0'><button id='plus' >+</button></div></div></div>";
-                    
-                    
-                    // str=json.styleName;
-                    // newarr.push(json)
-                }
-            };
-        }, "JSON");
+        
         // tab菜单
         hidden();
         function hidden(){
             for(let i =0;i<info.children.length;i++){
                 info.children[i].style.display="none";
-                // section[i].style.display="none";
                 nav.children[i].style.cssText = "border-bottom:2px solid #fff";
             }
         }
@@ -184,48 +129,179 @@
                 }
             })(i);
         };
-        // 商品数量增减
-        let reduce=$('reduce');
-        let sum=$('sum');
-        let plus=$('plus');
-        // let num = Number(sum.value);
         
-        // addEvent(plus,"click",()=>{
-        //     num+=1;
-        //     sum.value=num;
-        //     if(num>=1){
-        //         reduce.style.opacity='1';
-        //         sum.style.opacity = "1"
-        //     }
-        // });
-        //商品数量减少
-        // addEvent(reduce,"click",()=>{
-        //     num-=1;
-        //     sum.value=num;
-        //     if(num<1){
-        //         num=0;
-        //         reduce.style.opacity="0";
-        //         sum.style.opacity="0";
-        //     }
-        // });
         // 左上角返回
         let icon=$("icon");
         addEvent(icon,"click",()=>{
             history.go(-1);
         });
     })
-    // 添加 减少 事件
+    
     $(function () {
+        // 添加 事件
+        let yx = 0;
+        let zj=0;
+        var keyArr=[];
         $("#section").on("click", "#plus", function (e) {
-            var num = Number($("#sum").val());
-            num=num+1;
-            $("#sum").val(num)
+            var num = Number($(e.target).prev().val());
+            num+=1;
             if(num>0){
-                $("#reduce").css("opacity","1");
-                $("#sum").css("opacity", "1");
+                $(e.target).prev().prev().css("opacity","1");
+                $(e.target).prev().css("opacity", "1");
             }
-            console.log($("#sum").val())
+            let caiName= $(e.target).parent().prev().prev().prev().html();
+            
+            const db={
+                    caiName: caiName,
+                    caiNum: ""+num+"",
+                    caiPrice: $(e.target).parent().prev().prop("id"),
+                    caiId: $(e.target).parent().prop("id")                
+            }
+            keyArr.push(db)
+            // console.log(db.caiName);            
+             for(var i =0;i<keyArr.length;i++){
+                     if(keyArr[i].caiName==db.caiName && keyArr[i].caiNum < db.caiNum){
+                         keyArr[i]=db;
+                        keyArr.splice(i,1)
+                    }
+             }
+            // console.log(keyArr)
+            yx += 1;
+            $(e.target).prev().val(num);
+
+            zj+=Number(db.caiPrice);
+            // console.log(zj)
+            $(".yx").html(`已选：${yx}份`);
+            $(".zj").html(`总计：${zj}元`);
+        });
+        
+        //减少
+        $("#section").on("click","#reduce",function(e){
+            var num= Number($(e.target).next().val());
+            num=num-1;
+            if (num <= 0) {
+                $(e.target).next().css("opacity", "0");
+                $(e.target).css("opacity", "0");
+            }
+            let caiName = $(e.target).parent().prev().prev().prev().html();
+            const db = {
+                caiName: caiName,
+                caiNum: num,
+                caiPrice: $(e.target).parent().prev().prop("id"),
+                caiId: $(e.target).parent().prop("id")
+            }
+            // console.log(keyArr);
+            for(var i=0;i<keyArr.length;i++){
+                if(db.caiName == keyArr[i].caiName){
+                    keyArr[i]=db;
+                }
+            }
+            // console.log(keyArr);
+            
+            $(e.target).next().val(Number(num));
+            yx -= 1;
+            let a=parseFloat($(".zj").html().substring(3));
+            // console.log(a)
+            zj = a - Number(db.caiPrice);
+            $(".yx").html(`已选：${yx}份`);
+            $(".zj").html(`总计：${zj}元`);
         })
+        $("#pay").click(function(){
+            if(yx==0){
+                alert("请选择菜品！");
+            }else{
+                var str = JSON.stringify(keyArr);
+                if (window.localStorage) {
+                    sessionStorage.setItem('key', str);
+                }
+                location.href = "xf-confirm.html";
+            }
+        })
+        //  请求菜品信息  并分类显示
+        !function ajax2(){
+            var sjId=sessionStorage.getItem('sjId');
+            $.ajax({
+                url:'../../common/php/goodsinfo.php',
+                type:'POST',
+                data:{
+                    'sjId': sjId
+                },
+                // dataType:'html',
+                success:function(ret){
+                    var data = ret.split(";");
+                    data.pop();
+                    var nameArr = [];
+                    data.map(value => {
+                        nameArr.push(JSON.parse(value).styleName)
+                    });
+                    // console.log(nameArr)
+                    // 数组去重
+                    Array.prototype.reorder = function () {
+                        var res = [this[0]];        //???
+                        for (var i = 1; i < this.length; i++) {
+                            var repeat = false;
+                            for (j in res) {
+                                if (this[i] == res[j]) {
+                                    repeat = true;
+                                }
+                            }
+                            if (repeat == false) {
+                                res.push(this[i])
+                            }
+                        }
+                        return res;
+                    }
+                    nameArr1 = nameArr.reorder();
+                    // console.log(nameArr)
+                    // 拼接成一个对象  每个分类加一个数据
+                    nameArr = nameArr1.map(elt => {
+                        return { 'name': elt, 'data': [] }
+                    })
+                    console.log(nameArr)
+                    // ？？？
+                    data.map(elt => {
+                        let every = JSON.parse(elt)
+                        // console.log(every)
+                        nameArr.map(value => {
+                            if (every.styleName == value.name) {
+                                value.data.push(every)
+                            }
+                        })
+                    })
+                    // 输出
+                    // console.log(nameArr)
+                    var str = '';
+                    nameArr.map((item,index) => {
+                        // 左边菜品分类信息
+                        caiStyle.innerHTML += `<li><a href='#${index}'>${item.name}</a></li>`;
+                        // 右边菜品分类信息
+                        str+= `<div class="cid${index}" ><a class='target' name="${index}"></a><span><a>${item.name}</a></span>`;
+                        // 菜品信息
+                        item.data.map((info,index) => {
+                           str+= `<div id="goods"><img src="../../business/php/upload/${info.caiImg}"><div id="${index}" class="aside"><h5>${info.caiName}</h5><p>月售99份 好评率100%</p><p id="${info.caiPrice}">￥${info.caiPrice}</p><div id="${info.caiId}" class="num"><button id="reduce">-</button><input id="sum" type="text" value="0"><button id="plus">+</button></div></div></div>`
+                        })
+                        str += '</div>'
+                    })
+                        str+='<div id="foot"></div>';
+                        $("#section").html(str)
+                }
+            })
+
+            // 店铺名称显示
+            $.ajax({
+                url: '../../common/php/dpname.php',
+                type: 'POST',
+                data: {
+                    'sjId': sjId
+                },
+                success: function (data) {
+                    var json=JSON.parse(data);
+                    console.log(json.dpName);
+                    $("#address").text(json.dpName)
+                }
+            })
+        }();
+        
     })
 </script>
 

@@ -21,7 +21,8 @@ body{
 /*登陆区*/
 section{
 	margin:0 auto;
-	margin-top: 96px;
+	margin-top: 95px;
+    padding-top: 80px;
 	width:521px;
 	height:310px;
 	/*border:1px solid #f0f;*/
@@ -69,53 +70,43 @@ input{
 	bottom:0;
 	left:40px;
 }
-/*验证码*/
-.ad-yzm{
-	width:300px;
-	height:60px;
-	margin-left: 140px;
-	position: relative;
-}
-.ad-yzm input{
-	width:100px;
-	position: absolute;
-	bottom:0;
-}
-.yzm{
-	width:100px;
-	position: absolute;
-	bottom:0;
-	left:130px;
-}
+
 /*提示*/
-.tip{
-	margin-left: 140px;
-	margin-top: 20px;
-	font-size: 14px;
-	color:#fff;
+p#tips {
+    text-align: center;
+    margin-top: 13px;
+    color: #900;
 }
 /*登陆按钮*/
 .btn{
-	margin-top: 20px;
-	margin-left: 140px;
 	cursor: pointer;
-	outline: none;
-	border:none;
-	background: #5eb85e;
-	padding:8px 25px;
-	border-radius: 3px;
-	letter-spacing: 5px;
-	color:#fff;
+    outline: none;
+    border: none;
+    background: #5eb85e;
+    padding: 10px 0;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    display: block;
+    width: 275px;
+    margin: 0 auto;
 }
-/*footer{
+.application{
+	position: absolute;
+    top: 500px;
+    left: 940px;
+	color: #fff;
+	text-decoration: none;
+}
+footer{
 	height:50px;
 	width:100%;
 	line-height: 50px;
 	background: #426374;
 	position: absolute;
-	float: left;
-	bottom: 0;
+	bottom: -173px;
+	opacity: 0.5;
 	text-align: center;
 	color:#fff;
-	font-size: 14px;
-}*/
+	font-size: 16px;
+}

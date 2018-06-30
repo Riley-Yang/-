@@ -2,34 +2,31 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>欢迎登陆系统管理</title>
+	<title>商家登录</title>
 	<link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 	<header>
 		<div class="ad-login-header">
-			<h3>后台管理系统</h3>
+			<h3>商家登录</h3>
 		</div>
 	</header>
 	<section>
 		<div class="ad-user">
 			<img src="../img/user.svg" alt="" class="user">
-			<input type="text" class="userName" id="userName"><br>
+			<input type="text" class="userName" id="userName" placeholder="请输入用户名"><br>
 		</div>
 		<div class="ad-pwd">
 			<img src="../img/pwd.svg" alt="" class="pwd">
-			<input type="password" class="password" id="password">
+			<input type="password" class="password" id="password" placeholder="请输入密码">
 		</div>
-		<div class="ad-yzm">
-			<input type="text" class="verification" id="verification">
-			<img src="../img/yzm.png" alt="" class="yzm">
-		</div>
-		<p class="tips"></p>
+		<p class="tips" id="tips"></p>
 		<button class="btn" id="btn">登陆</button>
+		<a class="application" href="application.html">商家开店申请</a>
 	</section>
-	<!-- <footer>
+	<footer>
 		<p>Copyright    ©  2017  Yang</p>
-	</footer> -->
+	</footer>
 </body>
 <script src="../../common/js/addevent.js"></script>
 <script src="../../common/js/ajax.js"></script>
@@ -44,11 +41,12 @@
 		addEvent(btn, 'click', () => {
 			//执行ajax过程
 			let data = '{"userName":"' + userName.value + '","password":"' + password.value + '"}';
-			console.log(data);
-			ajax("POST", "../../common/php/xf-login.php", returnData => {
-				console.log(returnData)
+			// console.log(data);
+			ajax("POST", "../php/login.php", returnData => {
+				// console.log(returnData)
 				let json = JSON.parse(returnData);
 				if (json.status == "10001") {
+					document.getElementById("btn").disabled=true;
 					location.href = "./index.shtml";
 				} else {
 					tips.innerHTML = json.message;

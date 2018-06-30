@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../common/consumer/css/common.css">
+    <link rel="stylesheet" href="../css/confirm.css">
+    <title>下单成功</title>
+    <style>
+        html{
+            font-family: "微软雅黑"
+        }
+        content{
+            width:6rem;
+            position: relative;
+            width: 6rem;
+            top: 120px;
+            left: 100px;
+        }
+        h4{
+            font-size: 35px;
+        }
+        content p{
+            font-size: 20px;
+            margin-left: 18px;
+            margin-top: 12px;
+        }
+        #btn{
+            border: none;
+            border-radius: 3px;
+            background: #5cb85c;
+            padding: 8px 20px;
+            color: #fff;
+            margin-left: 55px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <svg id="icon" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-zuojiantou"></use>
+            </svg>
+            <p id="address">
+                <a href="javascript:;">下单成功</a>
+            </p>
+        </div>
+    </header>
+    <content>
+        <h4>恭喜下单成功</h4>
+        <p><span id="time">3</span>秒后自动返回首页</p>
+        <button id="btn" onclick="onback()">立即返回</button>
+    </content>
+</body>
+<script src="../js/iconfont.js"></script>
+<script src="../../common/js/mobile.js"></script>
+<script>
+    function onback(){
+        location.href="./xf-waimai.shtml";
+    }
+    var num = 4;
+    !function back() {
+        
+        setInterval(function(){
+            --num;
+            document.getElementById("time").innerHTML=num;
+            if(num<=0){
+                location.href = "./xf-waimai.shtml";
+            }
+        },1000);
+    }();
+</script>
+</html>

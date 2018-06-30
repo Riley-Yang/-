@@ -1,0 +1,27 @@
+/* ****************************header start*/
+header{
+    width:6.4rem;
+    height: 0.877rem;
+    line-height: 0.877rem;
+    position: fixed;
+    z-index: 999;
+    top:0;
+    font-size: 0.3rem;
+    background: #00a7ff;
+    color:#fff;
+}
+header .icon {
+    width: 20px;
+    height: 37px;
+    float: left;
+    margin:10px 10px 0 20px;
+    vertical-align: 1em;
+    fill: currentColor;
+    overflow: hidden;
+    outline: none;
+}
+content{
+    position: relative;
+    top: 19px;
+    font-size: 18px;
+}

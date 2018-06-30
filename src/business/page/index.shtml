@@ -22,7 +22,50 @@
 	<!-- 侧边栏 -->
 <!--#include virtual="html/asside.html"-->
 <div id="diy-right">
-	<p class="ding">暂时没有新订单</p>
+	<div>
+		<h4 class="title">新订单</h4>
+		<h4 class="ding">暂时没有新订单</h4>
+		<div class="new" id="new">
+			<!-- 动态添加新订单信息 -->
+		</div>
+	
+	</div>
+	<div class="right">
+		<h4>待处理订单</h4>
+		<h4>暂时没有待处理订单</h4>
+		<div class="pending" id="pending">
+			<!-- <h5>订单流水号：
+				<span>1132454545454</span>
+			</h5>
+			<h5>下单时间：
+				<span>2018/5/2 13:14:00</span>
+			</h5>
+			<hr>
+			<h5>备注：
+				<span>咖啡不加糖</span>
+			</h5>
+			<hr>
+			<ul>
+				<li>
+					<span>菜品名称</span>
+					<span class="num-pri1">
+						<span id="num1" class="num1">数量</span>
+						<span id="price1" class="price1">单价</span>
+						<span id="count1" class="count1">小计</span>
+					</span>
+				</li>
+			</ul>
+			<hr>
+			<h5 id="sum" class="sum"></h5>
+			<hr>
+			<h5 id="name" class="name"></h5>
+			<h5 id="phone" class="phone"></h5>
+			<h5 id="address"></h5>
+			<h5 id="sTime"></h5>
+			<hr>
+			<button id="accept">发送订单</button> -->
+		</div>
+	</div>
 </div>
 
 
@@ -31,11 +74,165 @@
 <script type="text/javascript">
 
 	$(function () {
-		//顶部导航切换
+		//左侧导航切换
 		$("#demo-list li").click(function () {
 			$("#demo-list li.active").removeClass("active")
 			$(this).addClass("active");
 		});
+		// ajax长轮询
+		(function longPolling() {
+			// 请求订单信息
+			var strstr="";
+			var xy=null;
+			$.ajax({
+				url: "./../php/comet.php",
+				data: { "timed": Date.parse(new Date()) / 1000 },
+				dataType: "text",
+				timeout: 5000,//5秒超时，可自定义设置  
+				success: function (data, textStatus) {
+					var str=data.split(";");
+					str.pop();
+					var danId0= JSON.parse(str[0]).danId;
+					var xTime0=JSON.parse(str[0]).xTime;
+					var name0=JSON.parse(str[0]).uName;
+					var phone0=JSON.parse(str[0]).uPhone;
+					var note0=JSON.parse(str[0]).note;
+					var address0=JSON.parse(str[0]).address;
+					var sTime0=JSON.parse(str[0]).sTime;
+					var sjId0=JSON.parse(str[0]).sjId;
+					var arr=[];
+					for(var i =0,len=str.length;i<len;i++){
+						if(danId0=== JSON.parse(str[i]).danId){
+							const db={
+								cName: JSON.parse(str[i]).cName,
+								cNum: JSON.parse(str[i]).cNum,
+								cPrice: JSON.parse(str[i]).cPrice
+							}
+							arr.push(db);
+						}
+					};
+					// console.log(str);
+					$(".ding").css("display","none");
+					$("#new").css("display","block");
+					
+					// 下单的菜品信息
+					var str1="";
+					let count=0;
+					for(var i=0;i<arr.length;i++){
+						str1=str1+`<li><span id="cName">${arr[i].cName}</span><span class="num-pri"><span id="num" class="num">x${arr[i].cNum}</span><span id="price" class="price">${arr[i].cPrice}</span><span id="count" class="count">${arr[i].cPrice}</span></span></li>`;
+						count+= arr[i].cNum* arr[i].cPrice;
+					}
+					strstr=`<h5>订单流水号：
+								<span id="danId"></span>
+							</h5>
+							<h5>商家编号：
+								<span id="sjId"></span>	
+							</h5>
+							<h5>下单时间：
+								<span id="xTime"></span>
+							</h5>
+							<hr>
+							<h5>备注：
+								<span id="note"></span>
+							</h5>
+							<hr>
+							<ul id="abc">
+								<li>
+									<span>菜品名称</span>
+									<span class="num-pri1">
+										<span id="num1" class="num1">数量</span>
+										<span id="price1" class="price1">单价</span>
+										<span id="count1" class="count1">小计</span>
+									</span>
+								</li>
+							</ul>
+							<hr>
+							<h5>其它：</h5>
+							<ul>
+								<li>餐盒费：
+									<span id="cPrice" class="cPrice">5</span>
+								</li>
+								<li>配送费：
+									<span id="sPrice" class="sPrice">0</span>
+								</li>
+							</ul>
+							<hr>
+							<h5 id="sum" class="sum"></h5>
+							<hr>
+							<h5 id="name" class="name"></h5>
+							<h5 id="phone" class="phone"></h5>
+							<h5 id="address"></h5>
+							<h5 id="sTime"></h5>
+							<hr>
+							<button id="accept" class="update">接受订单</button>`;
+					$("#new").append(strstr);
+					
+					xy=function(){
+						$("#abc").append(str1);
+						// 订单流水号
+						$("#danId").text(danId0);
+						//商家编号
+						$("#sjId").text(sjId0);
+						//下单时间
+						$("#xTime").text(xTime0);
+						//联系人
+						$("#name").text(`收货人：${name0}`);
+						//联系电话
+						$("#phone").text(`联系方式：${phone0}`)
+						// 总计
+						$("#sum").text(`总计：${count}`);
+						// 备注
+						$("#note").text(note0)
+						//收货地址
+						$("#address").text(`收货地址：${address0}`);
+						//送达时间
+						$("#sTime").text(`送达时间：${sTime0}`);
+					}
+					xy();
+					
+					if (textStatus == "success") { // 请求成功  
+						// longPolling();
+					}
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+					$(".ding").text("暂时没有新订单");
+					if (textStatus == "timeout") { // 请求超时  
+						longPolling(); // 递归调用  
+					} else { // 其他错误，如网络错误等  
+						longPolling();
+					}
+				},
+				complete:function(){
+					//接收订单点击事件
+					$(".update").click(function () {
+						var data=`{"sjId":"${$("#sjId").text()}","danId":"${$("#danId").text()}"}`;
+						
+						$.ajax({
+							url:'./../php/upstate.php',
+							data:data,
+							type:"POST",
+							dataType:"html",
+							success:function(returnData){
+								var json=JSON.parse(returnData);
+								if(json.status=="10001"){
+									alert("订单已接收");
+									$("#new").html("");
+									$("#new").css("display", "none");
+									$("#pending").css("display", "block");
+									$("#pending").append(strstr)
+									xy();
+									$("#accept").text("发送订单");
+									$(".ding").css("display", "block");
+									longPolling();
+								}
+							}
+						})
+						
+					});
+				}
+			});
+		})();
+		
 	});
 </script>
 </body>

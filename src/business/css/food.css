@@ -1,10 +1,10 @@
-#diy-right{
-    font-size: 14px;
-    background: #fff;
-}
 #diy-right .row{
     padding: 6px 0 10px 20px;
-    box-shadow:8px 0px 20px 0px #333
+    box-shadow: 8px 0px 20px 0px #333;
+    position: fixed;
+    z-index: 999;
+    width: 2000px;
+    background: #fff;
 }
 #diy-right .row a{
     margin-left: 10px;
@@ -108,7 +108,95 @@
     margin-top: 20px;
     margin-left: 15px;
 }
-
 #addcaiinfo{
-    opacity:0;
+    display: none;
+    position: relative;
+    top:40px;
+    z-index: 100;
+}
+/* 菜品编辑样式 */
+.editcai{
+    width:1065px;
+    /* height:500px; */
+    margin: 66px 0 0 15px;
+    padding: 20px 0 0 30px;
+    position: absolute;
+    z-index: 99;
+    top:0;
+    left:0;
+    display: none;
+    box-shadow: 0px 3px 12px -3px #333;
+}
+.editcai #seachbox #seachText{
+    height: 28px;
+    border-radius: 3px;
+    border: 1px solid;
+    font-size: 16px;
+    padding: 3px;
+}
+#tbody img{
+    display: block;
+    width:300px;
+    margin:0 auto;
+}
+button{
+    cursor: pointer;
+}
+.table > tbody > tr > td{
+    text-align: center;
+    vertical-align: middle;
+}
+#back{
+    display: none;
+}
+/* 修改 */
+#editha{
+    position: relative;
+    z-index: 998;
+    display: none;
+    width:800px;
+    margin-top:100px;
+    margin-left:250px;
+    padding:30px;
+    box-shadow: 0px 3px 12px -3px #333;
+}
+#editha li{
+    margin-top:20px;
+    font-size: 18px;
+}
+#editha input{
+    margin-left:10px;
+    padding:5px 8px;
+}
+#editha img{
+    width: 250px;
+    position: absolute;
+    top: 90px;
+    left: 445px;
+}
+#editha p{
+    position: absolute;
+    top:290px;
+    left:537px;
+    font-size: 18px;
+}
+#editha .btn{
+    position: absolute;
+    left: 545px;
+    top: 420px;
+}
+#editha #editSave,
+#editha #editCancel{
+    padding: 10px 35px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    color:#fff;
+    font-size: 16px;
+}
+#editha #editSave{
+    background: #97d3c5;
+}
+#editha #editCancel{
+    background: #f68484;
 }
